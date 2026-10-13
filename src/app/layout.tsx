@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
+import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://0xdevprabhu.page.gd"),
@@ -104,7 +105,10 @@ export default function RootLayout({
         />
       </head>
       <body className="antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
-        <ThemeProvider>{children}</ThemeProvider>
+        <ThemeProvider>
+          <LoadingScreen minDuration={2000} />
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );
