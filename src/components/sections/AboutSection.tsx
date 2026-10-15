@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { profileData } from "@/data/profile";
 import { useTheme } from "../theme/ThemeProvider";
 import { Terminal, MapPin, Mail, Phone, ExternalLink, Sparkles } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface AboutSectionProps {
   onOpenResumePreview: () => void;
@@ -140,7 +141,13 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
     <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/40">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span
             className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10"
             style={{ color: currentColorTheme.primary }}
@@ -154,12 +161,18 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
             className="h-1 w-12 mx-auto rounded-full mt-3"
             style={{ backgroundColor: currentColorTheme.primary }}
           />
-        </div>
+        </motion.div>
 
         {/* Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Column: Narrative Story & Contact Pills */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-xs space-y-4">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 Passionate Full Stack Developer & LAMP Specialist
@@ -197,10 +210,16 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Interactive Developer Terminal */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 40 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="lg:col-span-7"
+          >
             <div className="rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl flex flex-col h-[420px]">
               {/* Terminal Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
@@ -263,7 +282,7 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

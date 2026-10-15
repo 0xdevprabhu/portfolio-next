@@ -4,6 +4,7 @@ import React from "react";
 import { experiences } from "@/data/experience";
 import { useTheme } from "../theme/ThemeProvider";
 import { Briefcase, GraduationCap, Calendar, Eye, Building2, CheckCircle2 } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface ExperienceSectionProps {
   onOpenCertificatePreview: (fileUrl: string) => void;
@@ -16,7 +17,13 @@ export function ExperienceSection({ onOpenCertificatePreview }: ExperienceSectio
     <section id="certifications" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/40">
       <div className="max-w-5xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span
             className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10"
             style={{ color: currentColorTheme.primary }}
@@ -33,14 +40,21 @@ export function ExperienceSection({ onOpenCertificatePreview }: ExperienceSectio
             className="h-1 w-12 mx-auto rounded-full mt-3"
             style={{ backgroundColor: currentColorTheme.primary }}
           />
-        </div>
+        </motion.div>
 
         {/* Vertical Timeline */}
         <div className="relative pl-6 sm:pl-10 space-y-8 sm:space-y-12 before:absolute before:left-2 sm:before:left-3.5 before:top-3 before:bottom-3 before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
-          {experiences.map((exp) => {
+          {experiences.map((exp, expIdx) => {
             const isEducation = exp.type === "education";
             return (
-              <div key={exp.id} className="relative group">
+              <motion.div
+                key={exp.id}
+                initial={{ opacity: 0, x: -35 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: expIdx * 0.1, ease: [0.16, 1, 0.3, 1] }}
+                className="relative group"
+              >
                 {/* Timeline Dot */}
                 <div
                   className="absolute -left-[30px] sm:-left-[43px] top-1.5 flex h-7 w-7 sm:h-8 sm:w-8 items-center justify-center rounded-full bg-white dark:bg-slate-900 border-2 transition-transform duration-300 group-hover:scale-125 shadow-md"
@@ -109,7 +123,7 @@ export function ExperienceSection({ onOpenCertificatePreview }: ExperienceSectio
                     </div>
                   )}
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>

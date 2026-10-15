@@ -20,6 +20,7 @@ import {
   MessageSquare,
   Sparkles,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ContactSection() {
   const { currentColorTheme } = useTheme();
@@ -134,7 +135,13 @@ export function ContactSection() {
     <section id="contact" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/40">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span
             className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10"
             style={{ color: currentColorTheme.primary }}
@@ -151,12 +158,18 @@ export function ContactSection() {
             className="h-1 w-12 mx-auto rounded-full mt-3"
             style={{ backgroundColor: currentColorTheme.primary }}
           />
-        </div>
+        </motion.div>
 
         {/* Top Grid: Info & Standard Contact Form */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-14">
           {/* Left Column: Direct Info & Social Cards */}
-          <div className="lg:col-span-5 space-y-6">
+          <motion.div
+            initial={{ opacity: 0, x: -35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+            className="lg:col-span-5 space-y-6"
+          >
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs space-y-6">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
                 Contact Information
@@ -269,10 +282,16 @@ export function ContactSection() {
                 </div>
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Right Column: Contact Message Form */}
-          <div className="lg:col-span-7">
+          <motion.div
+            initial={{ opacity: 0, x: 35 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
+            className="lg:col-span-7"
+          >
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-6">
                 Send a Message
@@ -374,11 +393,17 @@ export function ContactSection() {
                 </button>
               </form>
             </div>
-          </div>
+          </motion.div>
         </div>
 
         {/* Bottom Feature: Recruiter Offer Letter Dropzone */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs"
+        >
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700/60">
             <div>
               <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold mb-1">
@@ -495,7 +520,7 @@ export function ContactSection() {
               </div>
             )}
           </form>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

@@ -15,6 +15,7 @@ import {
   Sparkles,
   CheckCircle,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface HeroSectionProps {
   onOpenResumePreview: () => void;
@@ -80,7 +81,12 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
         )}
 
         {/* Profile Avatar with Ambient Glow Ring */}
-        <div className="relative group mb-8">
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="relative group mb-8"
+        >
           <div
             className="absolute -inset-1.5 rounded-full blur-md opacity-70 group-hover:opacity-100 transition-all duration-500 animate-pulse-slow"
             style={{
@@ -104,10 +110,15 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
               Open to Roles
             </span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Greeting & Headline */}
-        <div className="space-y-3 max-w-3xl">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
+          className="space-y-3 max-w-3xl"
+        >
           <span className="inline-block text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
             Hello, I am
           </span>
@@ -147,10 +158,15 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
             <MapPin className="h-3.5 w-3.5 text-primary" />
             <span>Sivakasi, Tamil Nadu, India</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Primary CTA Buttons */}
-        <div className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-8 flex flex-wrap items-center justify-center gap-3 sm:gap-4"
+        >
           <Link
             href="#projects"
             className="flex items-center gap-2 px-6 py-3 rounded-full font-semibold text-sm text-white shadow-lg transition-all duration-300 hover:scale-105 active:scale-95"
@@ -192,10 +208,15 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
               <Eye className="h-4 w-4" />
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* Key Highlights / Stats Ribbon */}
-        <div className="mt-12 w-full grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800/80">
+        <motion.div
+          initial={{ opacity: 0, y: 25 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
+          className="mt-12 w-full grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 pt-6 border-t border-slate-200/80 dark:border-slate-800/80"
+        >
           {profileData.stats.map((stat, i) => (
             <div
               key={i}
@@ -212,7 +233,7 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
               </span>
             </div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

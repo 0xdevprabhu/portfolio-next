@@ -5,6 +5,7 @@ import Image from "next/image";
 import { certificatesData } from "@/data/certificates";
 import { useTheme } from "../theme/ThemeProvider";
 import { Award, Eye, Download, ExternalLink, Calendar, CheckCircle } from "lucide-react";
+import { motion } from "framer-motion";
 
 interface CertificatesSectionProps {
   onOpenCertificatePreview: (fileUrl: string, title?: string, issuer?: string) => void;
@@ -23,7 +24,13 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
     <section id="certifications-gallery" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span
             className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10"
             style={{ color: currentColorTheme.primary }}
@@ -68,13 +75,17 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
               );
             })}
           </div>
-        </div>
+        </motion.div>
 
         {/* Certificates Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredCerts.map((cert) => (
-            <div
+          {filteredCerts.map((cert, idx) => (
+            <motion.div
               key={cert.id}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.15 }}
+              transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
               className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
             >
               {/* Certificate Image Preview */}
@@ -152,7 +163,7 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
                   </div>
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

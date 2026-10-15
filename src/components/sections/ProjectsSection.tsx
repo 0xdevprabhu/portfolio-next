@@ -18,6 +18,7 @@ import {
   ArrowRight,
   Sparkles,
 } from "lucide-react";
+import { motion } from "framer-motion";
 
 export function ProjectsSection() {
   const { currentColorTheme } = useTheme();
@@ -32,7 +33,13 @@ export function ProjectsSection() {
     <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <span
             className="text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full bg-primary/10"
             style={{ color: currentColorTheme.primary }}
@@ -97,7 +104,7 @@ export function ProjectsSection() {
               Utility Tools ({utilityToolsData.length})
             </button>
           </div>
-        </div>
+        </motion.div>
 
         {/* 1. Noxlay Cyber Tech Production Projects */}
         {(filter === "all" || filter === "company") && (
@@ -110,9 +117,13 @@ export function ProjectsSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {companyProjects.map((project) => (
-                <div
+              {companyProjects.map((project, idx) => (
+                <motion.div
                   key={project.id}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
                 >
                   {/* Thumbnail */}
@@ -165,7 +176,7 @@ export function ProjectsSection() {
                       )}
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -182,9 +193,13 @@ export function ProjectsSection() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {personalProjects.map((project) => (
-                <div
+              {personalProjects.map((project, idx) => (
+                <motion.div
                   key={project.id}
+                  initial={{ opacity: 0, y: 35 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
                   className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
                 >
                   <div className="relative h-52 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
@@ -248,7 +263,7 @@ export function ProjectsSection() {
                       </div>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
@@ -265,9 +280,13 @@ export function ProjectsSection() {
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-              {utilityToolsData.map((tool) => (
-                <div
+              {utilityToolsData.map((tool, idx) => (
+                <motion.div
                   key={tool.id}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, amount: 0.15 }}
+                  transition={{ duration: 0.5, delay: idx * 0.08, ease: [0.16, 1, 0.3, 1] }}
                   className="p-6 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between space-y-4 hover:-translate-y-1"
                 >
                   <div>
@@ -291,14 +310,20 @@ export function ProjectsSection() {
                     <span>Open Tool</span>
                     <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
                   </a>
-                </div>
+                </motion.div>
               ))}
             </div>
           </div>
         )}
 
         {/* 4. Engineering Workflow ("How I Build") */}
-        <div className="p-8 sm:p-10 rounded-3xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80">
+        <motion.div
+          initial={{ opacity: 0, y: 35 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+          className="p-8 sm:p-10 rounded-3xl bg-slate-50/80 dark:bg-slate-900/60 border border-slate-200/80 dark:border-slate-800/80"
+        >
           <div className="text-center max-w-xl mx-auto mb-10">
             <span
               className="text-xs font-bold uppercase tracking-wider text-primary"
@@ -341,7 +366,7 @@ export function ProjectsSection() {
               );
             })}
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
