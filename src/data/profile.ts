@@ -55,7 +55,7 @@ export const profileData = {
     },
   ],
   stats: [
-    { label: "Live Client Projects", value: "6+" },
+    { label: "Live Client Projects", value: "8+" },
     { label: "Certifications", value: "9" },
     { label: "Technical Score (NQT)", value: "70.3%" },
     { label: "Code Dedication", value: "100%" },
