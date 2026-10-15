@@ -4,7 +4,7 @@ import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://0xdevprabhu.page.gd"),
+  metadataBase: new URL("https://0xdevprabhu.vercel.app"),
   title: "Prabhu P | Elite Full Stack Developer & LAMP Stack Specialist",
   description:
     "Portfolio of Prabhu P, a Certified LAMP Stack Specialist, Full Stack Developer, and AI Enthusiast based in Sivakasi. View my projects, experience, resume, and credentials.",
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     "Next.js",
     "PHP Developer",
   ],
-  authors: [{ name: "Prabhu P", url: "https://0xdevprabhu.page.gd/" }],
+  authors: [{ name: "Prabhu P", url: "https://0xdevprabhu.vercel.app/" }],
   creator: "Prabhu P",
   icons: {
     icon: "/assets/images/profile.jpg",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://0xdevprabhu.page.gd/",
+    url: "https://0xdevprabhu.vercel.app/",
     title: "Prabhu P | Elite Full Stack Developer",
     description: "Certified LAMP Stack Specialist and AI Enthusiast from Sivakasi, Tamil Nadu.",
     images: [
@@ -93,8 +93,8 @@ export default function RootLayout({
                 addressRegion: "Tamil Nadu",
                 addressCountry: "IN",
               },
-              url: "https://0xdevprabhu.page.gd/",
-              image: "https://0xdevprabhu.page.gd/assets/images/profile.jpg",
+              url: "https://0xdevprabhu.vercel.app/",
+              image: "https://0xdevprabhu.vercel.app/assets/images/profile.jpg",
               sameAs: [
                 "https://www.linkedin.com/in/0xdevprabhu",
                 "https://github.com/0xdevprabhu",
