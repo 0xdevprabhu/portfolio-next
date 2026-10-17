@@ -30,7 +30,7 @@ export const skillCategories: SkillCategory[] = [
     description: "Leveraging cutting-edge generative AI models and automated workflows to accelerate software development.",
     skills: [
       { name: "Google Gemini API", icon: "/assets/images/gemini.svg", badge: "API Integration", level: 90 },
-      { name: "Claude AI", icon: "/assets/images/claude.png", level: 88 },
+      { name: "Claude AI", icon: "/assets/images/claude.jpg", level: 88 },
       { name: "ChatGPT (OpenAI)", icon: "/assets/images/chatgpt.png", level: 88 },
       { name: "xAI Grok", icon: "/assets/images/grok.png", level: 82 },
       { name: "GitHub Copilot", icon: "/assets/images/copilot.png", level: 85 },

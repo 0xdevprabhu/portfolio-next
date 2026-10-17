@@ -106,7 +106,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary">
         <ThemeProvider>
-          <LoadingScreen minDuration={2000} />
+          <LoadingScreen minDuration={1000} />
           {children}
         </ThemeProvider>
       </body>

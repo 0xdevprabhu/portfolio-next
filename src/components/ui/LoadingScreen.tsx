@@ -4,10 +4,10 @@ import React, { useEffect, useState, useMemo } from "react";
 import Image from "next/image";
 
 interface LoadingScreenProps {
-  minDuration?: number; // Minimum duration in ms (default 2000ms)
+  minDuration?: number; // Minimum duration in ms (default 1000ms)
 }
 
-export function LoadingScreen({ minDuration = 2000 }: LoadingScreenProps) {
+export function LoadingScreen({ minDuration = 1000 }: LoadingScreenProps) {
   const [isVisible, setIsVisible] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
   const [progress, setProgress] = useState(0);
