@@ -97,7 +97,7 @@ export const projectsData: Project[] = [
     image: "https://images.unsplash.com/photo-1545235617-9465d2a55698?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     tags: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Framer Motion"],
     liveUrl: "https://0xdevprabhu.vercel.app/",
-    githubUrl: "https://github.com/0xdevprabhu/portfolio",
+    githubUrl: "https://github.com/0xdevprabhu/portfolio-next",
     featured: true,
   },
   {
@@ -108,7 +108,7 @@ export const projectsData: Project[] = [
     image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     tags: ["Google Gemini API", "Next.js Route Handler", "TypeScript", "AI Chatbot"],
     liveUrl: "https://0xdevprabhu.vercel.app/",
-    githubUrl: "https://github.com/0xdevprabhu/portfolio",
+    githubUrl: "https://github.com/0xdevprabhu/portfolio-next",
     featured: true,
   },
 ];
