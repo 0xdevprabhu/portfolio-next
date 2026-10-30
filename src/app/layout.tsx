@@ -1,51 +1,172 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { JsonLd } from "@/components/seo/JsonLd";
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#020617" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://0xdevprabhu.vercel.app"),
-  title: "Prabhu P | Elite Full Stack Developer & LAMP Stack Specialist",
-  description:
-    "Portfolio of Prabhu P, a Certified LAMP Stack Specialist, Full Stack Developer, and AI Enthusiast based in Sivakasi. View my projects, experience, resume, and credentials.",
-  keywords: [
-    "Prabhu P",
-    "Full Stack Developer",
-    "LAMP Stack Specialist",
-    "AI Enthusiast",
-    "Sivakasi",
-    "Web Developer",
-    "Noxlay Cyber Tech",
-    "React",
-    "Next.js",
-    "PHP Developer",
-  ],
-  authors: [{ name: "Prabhu P", url: "https://0xdevprabhu.vercel.app/" }],
-  creator: "Prabhu P",
-  icons: {
-    icon: "/assets/images/profile.jpg",
-    apple: "/assets/images/profile.jpg",
+  title: {
+    default:
+      "0xdevprabhu | Prabhu P - Elite Full Stack Developer in Sivakasi | Noxlay Cyber Tech",
+    template: "%s | Prabhu P (@0xdevprabhu)",
   },
+  description:
+    "Official portfolio of Prabhu P (@0xdevprabhu), Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi, Tamil Nadu. Specialist in Next.js, React, PHP, MySQL, REST APIs, and AI integrations. View 8+ live projects, verified certifications, and contact for hire.",
+  applicationName: "0xdevprabhu Portfolio",
+  authors: [
+    { name: "Prabhu P", url: "https://0xdevprabhu.vercel.app" },
+    { name: "0xdevprabhu", url: "https://github.com/0xdevprabhu" },
+  ],
+  generator: "Next.js",
+  keywords: [
+    // Personal Brand & Handles
+    "0xdevprabhu",
+    "devprabhu",
+    "Prabhu P",
+    "Prabhu developer",
+    "Prabhu Sivakasi",
+    "0xdevprabhu portfolio",
+    "Prabhu portfolio",
+    "Prabhu P developer",
+    "developer",
+    
+    // Company Queries (Noxlay)
+    "Noxlay developer",
+    "Noxlay Cyber Tech developer",
+    "Noxlay company developer",
+    "Noxlay software engineer",
+    "Noxlay web developer",
+    "Noxlay Prabhu",
+    "Noxlay tech team",
+
+    // Sivakasi & Tamil Nadu Location Keywords
+    "Sivakasi developer",
+    "web developer in Sivakasi",
+    "full stack developer in Sivakasi",
+    "software developer Sivakasi",
+    "freelance developer Sivakasi",
+    "Sivakasi web designer",
+    "Tamil Nadu developer",
+    "best developer in Sivakasi",
+    "web development services Sivakasi",
+    "Sivakasi IT specialist",
+    "Virudhunagar developer",
+    "Madurai web developer",
+
+    // Tech Stack & Engineering Specializations
+    "LAMP stack specialist",
+    "LAMP stack developer",
+    "PHP MySQL developer",
+    "Next.js developer",
+    "React developer",
+    "Full Stack Developer",
+    "Frontend developer Sivakasi",
+    "Backend developer Sivakasi",
+    "AI integration engineer",
+    "REST API developer",
+    "Tailwind CSS developer",
+    "TypeScript developer",
+    "Linux Apache MySQL PHP",
+    "Stockfish AI developer",
+
+    // Project & Intent Searches
+    "Grocerzap developer",
+    "Sirenpyro developer",
+    "ChessMate AI developer",
+    "Smartmenu developer",
+    "Niranya fashions developer",
+    "Hire web developer in Sivakasi",
+    "Hire full stack developer",
+    "Hire freelance developer Tamil Nadu",
+    "0xdevprabhu projects",
+    "0xdevprabhu contact",
+    "Prabhu resume",
+  ],
+  referrer: "origin-when-cross-origin",
+  creator: "Prabhu P (@0xdevprabhu)",
+  publisher: "Prabhu P",
+  category: "technology",
+  classification: "Portfolio / Software Engineering",
+  alternates: {
+    canonical: "https://0xdevprabhu.vercel.app",
+    languages: {
+      "en-US": "https://0xdevprabhu.vercel.app",
+      "ta-IN": "https://0xdevprabhu.vercel.app",
+    },
+  },
+  icons: {
+    icon: [
+      { url: "/assets/images/profile.jpg", sizes: "32x32", type: "image/jpeg" },
+      { url: "/assets/images/profile.jpg", sizes: "192x192", type: "image/jpeg" },
+    ],
+    apple: [
+      { url: "/assets/images/profile.jpg", sizes: "180x180", type: "image/jpeg" },
+    ],
+    shortcut: "/assets/images/profile.jpg",
+  },
+  manifest: "/manifest.webmanifest",
   openGraph: {
-    type: "website",
+    type: "profile",
     locale: "en_US",
     url: "https://0xdevprabhu.vercel.app/",
-    title: "Prabhu P | Elite Full Stack Developer",
-    description: "Certified LAMP Stack Specialist and AI Enthusiast from Sivakasi, Tamil Nadu.",
+    siteName: "0xdevprabhu | Prabhu P Portfolio",
+    title: "0xdevprabhu | Prabhu P - Elite Full Stack Developer in Sivakasi | Noxlay Cyber Tech",
+    description:
+      "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi. View live enterprise client projects, AI tools, credentials, and hire Prabhu P.",
     images: [
       {
         url: "/assets/images/profile.jpg",
-        width: 800,
-        height: 800,
-        alt: "Prabhu P - Full Stack Developer",
+        width: 1200,
+        height: 630,
+        alt: "Prabhu P (@0xdevprabhu) - Full Stack Developer in Sivakasi",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Prabhu P | Elite Full Stack Developer",
-    description: "Certified LAMP Stack Specialist and AI Enthusiast from Sivakasi.",
+    site: "@0xdevprabhu",
+    creator: "@0xdevprabhu",
+    title: "Prabhu P (@0xdevprabhu) | Elite Full Stack Developer in Sivakasi",
+    description:
+      "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi. Explore live projects, AI chess engine, and get in touch.",
     images: ["/assets/images/profile.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    nocache: false,
+    googleBot: {
+      index: true,
+      follow: true,
+      noimageindex: false,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google:
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION ||
+      "google-site-verification=GSC_VERIFICATION_TOKEN_HERE",
+  },
+  other: {
+    "geo.region": "IN-TN",
+    "geo.placename": "Sivakasi",
+    "geo.position": "9.4533;77.7946",
+    "ICBM": "9.4533, 77.7946",
+    "contact:email": "0xdevprabhu@gmail.com",
+    "contact:phone_number": "+919344095995",
   },
 };
 
@@ -55,8 +176,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <head>
+        {/* Canonical link */}
+        <link rel="canonical" href="https://0xdevprabhu.vercel.app/" />
+
+        {/* Structured Data (Schema.org / JSON-LD) */}
+        <JsonLd />
+
         {/* Anti-FOUC Theme Initialization Script */}
         <script
           dangerouslySetInnerHTML={{
@@ -72,35 +199,6 @@ export default function RootLayout({
                 } catch(e) {}
               })();
             `,
-          }}
-        />
-        {/* JSON-LD Structured Data */}
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "Person",
-              name: "Prabhu P",
-              jobTitle: "Full Stack Developer & LAMP Stack Specialist",
-              worksFor: {
-                "@type": "Organization",
-                name: "Noxlay Cyber Tech",
-              },
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Sivakasi",
-                addressRegion: "Tamil Nadu",
-                addressCountry: "IN",
-              },
-              url: "https://0xdevprabhu.vercel.app/",
-              image: "https://0xdevprabhu.vercel.app/assets/images/profile.jpg",
-              sameAs: [
-                "https://www.linkedin.com/in/0xdevprabhu",
-                "https://github.com/0xdevprabhu",
-                "https://www.instagram.com/in__prabhu/?hl=en",
-              ],
-            }),
           }}
         />
       </head>

@@ -96,7 +96,7 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
           <div className="relative h-32 w-32 sm:h-40 sm:w-40 rounded-full overflow-hidden p-1 bg-white dark:bg-slate-900 shadow-2xl">
             <Image
               src={profileData.avatar}
-              alt="Prabhu P - Full Stack Developer"
+              alt="Prabhu P (@0xdevprabhu) - Full Stack Developer at Noxlay Cyber Tech, Sivakasi"
               width={160}
               height={160}
               priority
@@ -119,12 +119,26 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
           transition={{ duration: 0.6, delay: 0.15, ease: [0.16, 1, 0.3, 1] }}
           className="space-y-3 max-w-3xl"
         >
-          <span className="inline-block text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
-            Hello, I am
-          </span>
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white">
-            Prabhu P.
-          </h1>
+          {/* Identity & Company SEO Pill */}
+          <div className="inline-flex items-center flex-wrap justify-center gap-2 px-3.5 py-1.5 rounded-full bg-slate-100/80 dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 text-xs font-mono text-slate-700 dark:text-slate-300 shadow-xs mb-1">
+            <span className="font-bold text-primary">@0xdevprabhu</span>
+            <span className="text-slate-300 dark:text-slate-600">•</span>
+            <span className="font-medium text-slate-600 dark:text-slate-400">Noxlay Cyber Tech</span>
+            <span className="text-slate-300 dark:text-slate-600">•</span>
+            <span className="text-slate-600 dark:text-slate-400">Sivakasi, Tamil Nadu</span>
+          </div>
+
+          <div>
+            <span className="inline-block text-xs sm:text-sm font-semibold uppercase tracking-widest text-slate-500 dark:text-slate-400">
+              Hello, I am
+            </span>
+            <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
+              Prabhu P.
+              <span className="sr-only">
+                {" "}— 0xdevprabhu | Elite Full Stack Developer & LAMP Stack Specialist at Noxlay Cyber Tech, Sivakasi
+              </span>
+            </h1>
+          </div>
 
           {/* Animated Typing Text with Fixed Height to Prevent Layout Shift */}
           <div className="h-10 sm:h-14 flex items-center justify-center">
@@ -151,7 +165,7 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
             >
               {profileData.company}
             </span>
-            . Passionate about building secure, AI-integrated web solutions and scalable web architectures.
+            {" "}in Sivakasi, India. Crafting resilient web architectures, enterprise client portals, dynamic Next.js interfaces, and AI-driven applications.
           </p>
 
           <div className="flex items-center justify-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 pt-1">

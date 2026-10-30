@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import { Navbar } from "@/components/layout/Navbar";
+import { BreadcrumbNav } from "@/components/ui/BreadcrumbNav";
 import { HeroSection } from "@/components/sections/HeroSection";
 import { AboutSection } from "@/components/sections/AboutSection";
 import { SkillsSection } from "@/components/sections/SkillsSection";
@@ -59,6 +60,7 @@ export default function Home() {
 
       {/* Main Sections */}
       <main className="flex-grow">
+        <BreadcrumbNav />
         <HeroSection onOpenResumePreview={() => setIsResumeModalOpen(true)} />
         <AboutSection onOpenResumePreview={() => setIsResumeModalOpen(true)} />
         <SkillsSection />

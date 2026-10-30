@@ -25,12 +25,12 @@ export function Footer() {
               style={{ backgroundColor: currentColorTheme.primary }}
             />
             <span className="font-bold text-slate-900 dark:text-white text-base">
-              Prabhu P.
+              Prabhu P. <span className="font-mono text-xs text-primary font-normal">(@0xdevprabhu)</span>
             </span>
-            <span className="text-xs text-slate-400">| Full Stack Developer</span>
+            <span className="text-xs text-slate-400">| Developer @ Noxlay Cyber Tech</span>
           </div>
           <p className="text-xs text-slate-500 dark:text-slate-500">
-            &copy; {currentYear} Prabhu P. All rights reserved. Sivakasi, Tamil Nadu, India.
+            &copy; {currentYear} Prabhu P. Sivakasi, Tamil Nadu, India. Certified LAMP Stack Specialist & Full Stack Web Developer.
           </p>
         </div>
 
