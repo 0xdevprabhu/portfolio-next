@@ -31,6 +31,7 @@ export interface Experience {
   period: string;
   description: string;
   certificateFile?: string;
+  certificateFiles?: string[];
   skills?: string[];
   type: "work" | "internship" | "education";
 }
@@ -42,6 +43,7 @@ export interface Certificate {
   date: string;
   description: string;
   fileUrl: string;
+  fileUrls?: string[];
   thumbnailUrl: string;
   category: "cloud" | "frontend" | "fullstack" | "ai" | "evaluation";
   verifiedUrl?: string;

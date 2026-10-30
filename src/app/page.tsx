@@ -19,18 +19,37 @@ export default function Home() {
   // Modal states
   const [selectedCertificate, setSelectedCertificate] = useState<{
     fileUrl: string | null;
+    fileUrls?: string[];
     title?: string;
     issuer?: string;
   }>({ fileUrl: null });
 
   const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
-  const handleOpenCertificate = (fileUrl: string, title?: string, issuer?: string) => {
-    setSelectedCertificate({ fileUrl, title, issuer });
+  const handleOpenCertificate = (
+    fileUrlOrFiles: string | string[],
+    title?: string,
+    issuer?: string
+  ) => {
+    if (Array.isArray(fileUrlOrFiles)) {
+      setSelectedCertificate({
+        fileUrl: fileUrlOrFiles[0] || null,
+        fileUrls: fileUrlOrFiles,
+        title,
+        issuer,
+      });
+    } else {
+      setSelectedCertificate({
+        fileUrl: fileUrlOrFiles,
+        fileUrls: [fileUrlOrFiles],
+        title,
+        issuer,
+      });
+    }
   };
 
   const handleCloseCertificate = () => {
-    setSelectedCertificate({ fileUrl: null });
+    setSelectedCertificate({ fileUrl: null, fileUrls: undefined });
   };
 
   return (
@@ -57,6 +76,7 @@ export default function Home() {
 
       <CertificateModal
         fileUrl={selectedCertificate.fileUrl}
+        fileUrls={selectedCertificate.fileUrls}
         title={selectedCertificate.title}
         issuer={selectedCertificate.issuer}
         onClose={handleCloseCertificate}

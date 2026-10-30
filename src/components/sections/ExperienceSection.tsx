@@ -3,11 +3,11 @@
 import React from "react";
 import { experiences } from "@/data/experience";
 import { useTheme } from "../theme/ThemeProvider";
-import { Briefcase, GraduationCap, Calendar, Eye, Building2, CheckCircle2 } from "lucide-react";
+import { Briefcase, GraduationCap, Calendar, Eye, Building2, CheckCircle2, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface ExperienceSectionProps {
-  onOpenCertificatePreview: (fileUrl: string) => void;
+  onOpenCertificatePreview: (fileUrl: string | string[], title?: string, issuer?: string) => void;
 }
 
 export function ExperienceSection({ onOpenCertificatePreview }: ExperienceSectionProps) {
@@ -110,15 +110,35 @@ export function ExperienceSection({ onOpenCertificatePreview }: ExperienceSectio
                   )}
 
                   {/* View Certificate Action */}
-                  {exp.certificateFile && (
+                  {Boolean(exp.certificateFile || (exp.certificateFiles && exp.certificateFiles.length > 0)) && (
                     <div className="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-end">
                       <button
-                        onClick={() => onOpenCertificatePreview(exp.certificateFile!)}
+                        onClick={() => {
+                          const files =
+                            exp.certificateFiles && exp.certificateFiles.length > 0
+                              ? exp.certificateFiles
+                              : exp.certificateFile
+                              ? [exp.certificateFile]
+                              : [];
+                          onOpenCertificatePreview(
+                            files,
+                            `${exp.role} Certification${files.length > 1 ? "s" : ""}`,
+                            exp.company
+                          );
+                        }}
                         className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white shadow-xs transition-all hover:opacity-90 active:scale-95"
                         style={{ backgroundColor: currentColorTheme.primary }}
                       >
-                        <Eye className="h-3.5 w-3.5" />
-                        <span>View Verified Certificate</span>
+                        {exp.certificateFiles && exp.certificateFiles.length > 1 ? (
+                          <Layers className="h-3.5 w-3.5" />
+                        ) : (
+                          <Eye className="h-3.5 w-3.5" />
+                        )}
+                        <span>
+                          {exp.certificateFiles && exp.certificateFiles.length > 1
+                            ? `View Verified Certificates (${exp.certificateFiles.length})`
+                            : "View Verified Certificate"}
+                        </span>
                       </button>
                     </div>
                   )}

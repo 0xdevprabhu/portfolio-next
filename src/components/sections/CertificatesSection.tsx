@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { certificatesData } from "@/data/certificates";
 import { useTheme } from "../theme/ThemeProvider";
-import { Award, Eye, Download, ExternalLink, Calendar, CheckCircle } from "lucide-react";
+import { Award, Eye, Download, ExternalLink, Calendar, CheckCircle, Layers } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface CertificatesSectionProps {
-  onOpenCertificatePreview: (fileUrl: string, title?: string, issuer?: string) => void;
+  onOpenCertificatePreview: (fileUrl: string | string[], title?: string, issuer?: string) => void;
 }
 
 export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSectionProps) {
@@ -90,9 +90,18 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
             >
               {/* Certificate Image Preview */}
               <div
-                onClick={() => onOpenCertificatePreview(cert.fileUrl, cert.title, cert.issuer)}
+                onClick={() => {
+                  const files = cert.fileUrls && cert.fileUrls.length > 0 ? cert.fileUrls : cert.fileUrl;
+                  onOpenCertificatePreview(files, cert.title, cert.issuer);
+                }}
                 className="relative h-52 w-full overflow-hidden bg-slate-100 dark:bg-slate-900 cursor-pointer"
               >
+                {cert.fileUrls && cert.fileUrls.length > 1 && (
+                  <div className="absolute top-3 left-3 z-10 flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-slate-900/80 backdrop-blur-md text-white text-[11px] font-bold border border-white/20 shadow-md">
+                    <Layers className="h-3 w-3" />
+                    <span>{cert.fileUrls.length} Slides</span>
+                  </div>
+                )}
                 <Image
                   src={cert.thumbnailUrl}
                   alt={cert.title}
@@ -103,7 +112,7 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
                 <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                   <span className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/95 dark:bg-slate-900/95 text-xs font-bold text-slate-900 dark:text-white shadow-lg backdrop-blur-xs">
                     <Eye className="h-4 w-4 text-primary" />
-                    <span>View Original Document</span>
+                    <span>View {cert.fileUrls && cert.fileUrls.length > 1 ? "All Certificates" : "Original Document"}</span>
                   </span>
                 </div>
               </div>
@@ -133,11 +142,14 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
                 {/* Bottom Actions */}
                 <div className="pt-3 border-t border-slate-100 dark:border-slate-700/60 flex items-center justify-between">
                   <button
-                    onClick={() => onOpenCertificatePreview(cert.fileUrl, cert.title, cert.issuer)}
+                    onClick={() => {
+                      const files = cert.fileUrls && cert.fileUrls.length > 0 ? cert.fileUrls : cert.fileUrl;
+                      onOpenCertificatePreview(files, cert.title, cert.issuer);
+                    }}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
                   >
                     <Eye className="h-3.5 w-3.5" />
-                    <span>Preview</span>
+                    <span>{cert.fileUrls && cert.fileUrls.length > 1 ? `Preview (${cert.fileUrls.length})` : "Preview"}</span>
                   </button>
 
                   <div className="flex items-center gap-2">
