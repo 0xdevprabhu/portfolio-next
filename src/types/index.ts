@@ -3,6 +3,7 @@ export interface Project {
   title: string;
   category: "company" | "personal" | "tool";
   company?: string;
+  badge?: string;
   description: string;
   image: string;
   tags: string[];

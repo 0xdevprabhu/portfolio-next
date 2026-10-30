@@ -90,7 +90,7 @@ export function ProjectsSection() {
               }`}
               style={filter === "personal" ? { backgroundColor: currentColorTheme.primary } : {}}
             >
-              Personal & AI ({personalProjects.length})
+              Personal & AI Innovations ({personalProjects.length})
             </button>
             <button
               onClick={() => setFilter("tool")}
@@ -185,33 +185,46 @@ export function ProjectsSection() {
         {/* 2. Personal & AI Projects */}
         {(filter === "all" || filter === "personal") && (
           <div className="mb-16">
-            <div className="flex items-center gap-2 mb-6">
-              <User className="h-5 w-5 text-primary" />
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                Personal & AI Engineering Projects
-              </h3>
+            <div className="flex items-center justify-between mb-6 flex-wrap gap-2">
+              <div className="flex items-center gap-2">
+                <Sparkles className="h-5 w-5 text-primary" style={{ color: currentColorTheme.primary }} />
+                <h3 className="text-xl font-bold text-slate-900 dark:text-white">
+                  Personal Innovations & AI Engineering
+                </h3>
+              </div>
+              <span className="text-xs text-slate-500 dark:text-slate-400 font-medium">
+                Independent full-stack architectures & AI tools
+              </span>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {personalProjects.map((project, idx) => (
                 <motion.div
                   key={project.id}
                   initial={{ opacity: 0, y: 35 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, amount: 0.15 }}
-                  transition={{ duration: 0.6, delay: idx * 0.12, ease: [0.16, 1, 0.3, 1] }}
+                  transition={{ duration: 0.6, delay: idx * 0.1, ease: [0.16, 1, 0.3, 1] }}
                   className="group rounded-3xl overflow-hidden bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col hover:-translate-y-1.5"
                 >
-                  <div className="relative h-52 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-slate-100 dark:bg-slate-900">
                     <Image
                       src={project.image}
                       alt={project.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-105"
-                      sizes="(max-width: 768px) 100vw, 50vw"
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
-                    <div className="absolute top-3 left-3 bg-amber-500/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[10px] font-bold shadow-xs">
-                      Self Project
+                    <div
+                      className="absolute top-3 left-3 text-white backdrop-blur-md px-2.5 py-1 rounded-full text-[10px] font-bold shadow-md flex items-center gap-1.5"
+                      style={{ backgroundColor: `${currentColorTheme.primary}ee` }}
+                    >
+                      {project.badge?.toLowerCase().includes("ai") ? (
+                        <Sparkles className="h-3 w-3" />
+                      ) : (
+                        <User className="h-3 w-3" />
+                      )}
+                      <span>{project.badge || "Personal Project"}</span>
                     </div>
                   </div>
 
@@ -237,13 +250,14 @@ export function ProjectsSection() {
                         ))}
                       </div>
 
-                      <div className="flex items-center gap-4">
+                      <div className="flex items-center gap-4 pt-1">
                         {project.liveUrl && (
                           <a
                             href={project.liveUrl}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary hover:underline"
+                            style={{ color: currentColorTheme.primary }}
                           >
                             <span>Live Preview</span>
                             <ExternalLink className="h-3.5 w-3.5" />
@@ -254,7 +268,7 @@ export function ProjectsSection() {
                             href={project.githubUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"
+                            className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors"
                           >
                             <Github className="h-3.5 w-3.5" />
                             <span>GitHub Source</span>

@@ -71,7 +71,7 @@ export async function POST(req: NextRequest) {
     if (query.includes("skill") || query.includes("stack") || query.includes("tech")) {
       localReply = "Prabhu specializes in the LAMP stack (Linux, Apache, MySQL, PHP) along with modern frontend tools (React, Next.js, TypeScript, Tailwind CSS) and AI integration with the Gemini API!";
     } else if (query.includes("project") || query.includes("work")) {
-      localReply = "Prabhu has developed real production systems including Grocerzap.in (e-commerce), Agent Platform (automation), Smartmenu (restaurant tech), and Niranyafashions.in!";
+      localReply = "Prabhu has engineered production systems at Noxlay Cyber Tech (Grocerzap.in, Agent Platform, Smartmenu, Siren Pyro, Niranya) as well as creative personal architectures like ChessMate AI (Stockfish 19 chess companion), JobGetter (automated multi-platform scraper), and MERN Task Manager!";
     } else if (query.includes("experience") || query.includes("job") || query.includes("noxlay")) {
       localReply = "Prabhu is currently working as a Full Stack Developer at Noxlay Cyber Tech, having previously completed traineeships and internships in Full Stack and Machine Learning.";
     } else if (query.includes("resume") || query.includes("cv") || query.includes("download")) {
