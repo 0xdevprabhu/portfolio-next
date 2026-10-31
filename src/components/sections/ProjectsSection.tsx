@@ -30,7 +30,7 @@ export function ProjectsSection() {
   const workflowIcons = [PenTool, Database, Server, Layout, Rocket];
 
   return (
-    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="projects" className="py-20 px-4 sm:px-6 lg:px-8 w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div

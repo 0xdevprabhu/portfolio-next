@@ -61,11 +61,11 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
   return (
     <section
       id="home"
-      className="relative min-h-[92vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-[92vh] flex items-center justify-center pt-24 sm:pt-28 pb-16 px-4 sm:px-6 lg:px-8 overflow-hidden w-full max-w-full"
     >
       {/* Background Decorative Ambient Gradients */}
       <div
-        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] sm:w-[750px] h-[350px] sm:h-[450px] rounded-full blur-[120px] pointer-events-none opacity-20 dark:opacity-25 transition-all duration-700"
+        className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] sm:w-[550px] md:w-[750px] h-[300px] sm:h-[450px] rounded-full blur-[90px] sm:blur-[120px] pointer-events-none opacity-20 dark:opacity-25 transition-all duration-700 overflow-hidden"
         style={{
           background: `radial-gradient(circle, ${currentColorTheme.primary} 0%, ${currentColorTheme.accent} 100%)`,
         }}

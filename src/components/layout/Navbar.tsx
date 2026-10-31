@@ -44,7 +44,8 @@ export function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const scrollPos = window.scrollY || document.documentElement.scrollTop;
+      setIsScrolled(scrollPos > 15);
 
       const sections = navLinks.map((link) => link.href.substring(1));
       for (const section of sections) {
@@ -59,37 +60,38 @@ export function Navbar() {
       }
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
     <>
-      {/* Top Header Bar */}
+      {/* Top Header Bar — Pinned Permanently at the Top */}
       <header
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-300 ${
+        className={`fixed top-0 inset-x-0 w-full z-50 transition-all duration-200 ${
           isScrolled
-            ? "bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/60 dark:border-slate-800/60 shadow-xs"
-            : "bg-transparent"
+            ? "bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 shadow-xs"
+            : "bg-white/80 dark:bg-slate-900/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-b border-slate-200/40 dark:border-slate-800/40 sm:border-transparent"
         }`}
       >
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-1 sm:gap-4">
           {/* Logo / Brand */}
           <Link
             href="#home"
-            className="flex items-center gap-2.5 group focus:outline-none"
+            className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none shrink-0"
           >
             <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center text-white font-bold text-lg shadow-md transition-transform group-hover:scale-105"
+              className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-md transition-transform group-hover:scale-105 shrink-0"
               style={{ backgroundColor: currentColorTheme.primary }}
             >
               P
             </div>
             <div className="flex flex-col">
-              <span className="font-bold text-base sm:text-lg tracking-tight text-slate-900 dark:text-white leading-none">
+              <span className="font-bold text-sm sm:text-base md:text-lg tracking-tight text-slate-900 dark:text-white leading-none whitespace-nowrap">
                 Prabhu P.
               </span>
-              <span className="text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-1">
+              <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 sm:mt-1 whitespace-nowrap">
                 Full Stack & LAMP
               </span>
             </div>
@@ -118,13 +120,13 @@ export function Navbar() {
             })}
           </nav>
 
-          {/* Action Buttons */}
-          <div className="flex items-center gap-2 sm:gap-3">
+          {/* Action Buttons — Carefully Spaced for Zero Mobile Overflow */}
+          <div className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
             {/* Recruiter Fast-Track Button */}
             <button
               onClick={toggleFastTrack}
               title="Toggle Recruiter Fast-Track Mode"
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold transition-all border ${
+              className={`flex items-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold transition-all border ${
                 isFastTrack
                   ? "bg-amber-500 text-white border-amber-600 shadow-md ring-2 ring-amber-400/40"
                   : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-amber-50 dark:hover:bg-amber-950/30 hover:text-amber-600"
@@ -152,7 +154,7 @@ export function Navbar() {
               <Palette className="h-4 w-4 text-primary" />
             </button>
 
-            {/* Resume Quick Link */}
+            {/* Resume Quick Link (Desktop) */}
             <a
               href="/assets/documents/Prabhu's_Resume.pdf"
               download
@@ -176,7 +178,7 @@ export function Navbar() {
 
         {/* Mobile Dropdown Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl px-4 py-4 space-y-2">
+          <div className="lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl px-4 py-4 space-y-2 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
             {navLinks.map((link) => {
               const Icon = link.icon;
               const isActive = activeSection === link.href.substring(1);
@@ -200,6 +202,7 @@ export function Navbar() {
             <a
               href="/assets/documents/Prabhu's_Resume.pdf"
               download
+              onClick={() => setIsMobileMenuOpen(false)}
               className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm mt-3"
               style={{ backgroundColor: currentColorTheme.primary }}
             >
@@ -210,9 +213,9 @@ export function Navbar() {
         )}
       </header>
 
-      {/* Floating Bottom Navigation Bar for Mobile Phones (App Style per portfolio-main) */}
-      <div className="lg:hidden fixed bottom-4 left-4 right-4 z-40">
-        <div className="max-w-md mx-auto bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-full border border-slate-200/80 dark:border-slate-800/80 shadow-2xl p-2 flex items-center justify-around">
+      {/* Floating Bottom Navigation Bar for Mobile Phones — Centered & Contained */}
+      <div className="lg:hidden fixed bottom-4 inset-x-0 px-4 z-40 pointer-events-none flex justify-center">
+        <div className="w-full max-w-sm bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-full border border-slate-200/80 dark:border-slate-800/80 shadow-2xl p-1.5 flex items-center justify-around pointer-events-auto">
           {navLinks.map((link) => {
             const Icon = link.icon;
             const isActive = activeSection === link.href.substring(1);
@@ -220,7 +223,7 @@ export function Navbar() {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`p-2.5 rounded-full transition-all duration-200 ${
+                className={`p-2 rounded-full transition-all duration-200 ${
                   isActive
                     ? "text-white shadow-md scale-110"
                     : "text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white"

@@ -130,7 +130,7 @@ export function SkillsSection() {
   }, []);
 
   return (
-    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -167,7 +167,7 @@ export function SkillsSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.15 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: idx * 0.08 }}
-              className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs"
+              className="p-4 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200/80 dark:border-slate-700/80 shadow-xs w-full max-w-full overflow-hidden"
             >
               <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-6 pb-4 border-b border-slate-100 dark:border-slate-700/60">
                 <div className="flex items-center gap-3">
@@ -212,7 +212,7 @@ export function SkillsSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="p-6 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 text-white shadow-xl"
+            className="p-4 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 text-white shadow-xl w-full max-w-full overflow-hidden"
           >
             <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
               <div className="flex items-center gap-3">
@@ -247,8 +247,8 @@ export function SkillsSection() {
             </div>
 
             {/* Simulated Contribution Grid */}
-            <div className="pt-2 overflow-x-auto">
-              <div className="min-w-[600px]">
+            <div className="pt-2 overflow-x-auto w-full max-w-full">
+              <div className="min-w-[560px]">
                 <div className="grid grid-flow-col grid-rows-4 gap-1.5">
                   {ghActivitySquares.map((intensity, i) => (
                     <div

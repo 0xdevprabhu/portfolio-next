@@ -139,7 +139,7 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
   }, [logs]);
 
   return (
-    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/40">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-slate-50/50 dark:bg-slate-900/40 w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
@@ -219,9 +219,9 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="lg:col-span-7"
+            className="lg:col-span-7 w-full min-w-0 max-w-full"
           >
-            <div className="rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl flex flex-col h-[420px]">
+            <div className="rounded-2xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl flex flex-col h-[420px] w-full max-w-full">
               {/* Terminal Window Header */}
               <div className="flex items-center justify-between px-4 py-3 bg-slate-900/90 border-b border-slate-800">
                 <div className="flex items-center gap-2">

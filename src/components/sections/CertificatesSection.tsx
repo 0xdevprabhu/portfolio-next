@@ -21,7 +21,7 @@ export function CertificatesSection({ onOpenCertificatePreview }: CertificatesSe
       : certificatesData.filter((c) => c.category === activeCategory);
 
   return (
-    <section id="certifications-gallery" className="py-20 px-4 sm:px-6 lg:px-8">
+    <section id="certifications-gallery" className="py-20 px-4 sm:px-6 lg:px-8 w-full max-w-full overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Section Header */}
         <motion.div
