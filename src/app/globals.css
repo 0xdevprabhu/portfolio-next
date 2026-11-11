@@ -10,9 +10,9 @@
   --shadow-glow: rgba(2, 132, 199, 0.4);
 
   --radius-pill: 9999px;
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 8px;
+  --radius-lg: 40px;
+  --radius-md: 25px;
+  --radius-sm: 12px;
 
   --bg-app: #ffffff;
   --bg-surface: #f8fafc;

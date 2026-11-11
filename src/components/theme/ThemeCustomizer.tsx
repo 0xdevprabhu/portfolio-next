@@ -22,11 +22,11 @@ export function ThemeCustomizer() {
 
   return (
     <>
-      {/* Floating Theme Button */}
+      {/* Floating Theme Button — Lifted neatly above Mobile Bottom Dock & AI Chatbot */}
       <button
         onClick={() => setIsThemeCustomizerOpen(true)}
         aria-label="Customize Theme & Appearance"
-        className="fixed bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-primary/40"
+        className="fixed bottom-36 lg:bottom-24 right-4 sm:right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-primary/40"
         style={{
           backgroundColor: currentColorTheme.primary,
           boxShadow: `0 8px 25px ${currentColorTheme.primary}66`,

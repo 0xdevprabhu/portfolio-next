@@ -80,7 +80,7 @@ export function ChatbotWidget() {
       <button
         onClick={() => setIsOpen(!isOpen)}
         aria-label="Toggle AI Assistant"
-        className="fixed bottom-20 sm:bottom-6 right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-primary/40"
+        className="fixed bottom-20 lg:bottom-6 right-4 sm:right-6 z-40 flex h-12 w-12 items-center justify-center rounded-full text-white shadow-xl transition-all duration-300 hover:scale-110 active:scale-95 group focus:outline-none focus:ring-4 focus:ring-primary/40"
         style={{
           backgroundColor: currentColorTheme.primary,
           boxShadow: `0 8px 25px ${currentColorTheme.primary}66`,
@@ -98,7 +98,7 @@ export function ChatbotWidget() {
         <div
           role="dialog"
           aria-label="AI Chat Assistant"
-          className="fixed bottom-36 sm:bottom-20 right-4 sm:right-6 z-50 w-[92vw] sm:w-[380px] h-[480px] rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden text-slate-900 dark:text-slate-100 animate-slideUp"
+          className="fixed bottom-36 lg:bottom-24 right-4 sm:right-6 z-50 w-[92vw] sm:w-[380px] h-[480px] rounded-3xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col overflow-hidden text-slate-900 dark:text-slate-100 animate-slideUp"
         >
           {/* Header */}
           <div

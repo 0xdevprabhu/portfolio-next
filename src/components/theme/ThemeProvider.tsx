@@ -25,7 +25,7 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
   const [currentColorTheme, setCurrentColorTheme] = useState<ColorTheme>(curatedThemes[0]);
-  const [currentRadius, setCurrentRadius] = useState<RadiusTheme>(radiusPresets[2]); // rounded by default
+  const [currentRadius, setCurrentRadius] = useState<RadiusTheme>(radiusPresets[3]); // curved by default
   const [isThemeCustomizerOpen, setIsThemeCustomizerOpen] = useState<boolean>(false);
   const [isFastTrack, setIsFastTrack] = useState<boolean>(false);
   const [isMounted, setIsMounted] = useState<boolean>(false);
@@ -79,18 +79,11 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         localStorage.setItem("prabhu_portfolio_color_id", chosenTheme.id);
       } catch {}
 
-      // 3. Corner Radius: Auto-shuffle on every page refresh (different from previous)
-      const lastRadiusId = localStorage.getItem("prabhu_portfolio_radius_id");
-      const availableRadii = radiusPresets.filter((r) => r.id !== lastRadiusId);
-      const chosenRadius =
-        availableRadii.length > 0
-          ? availableRadii[Math.floor(Math.random() * availableRadii.length)]
-          : radiusPresets[Math.floor(Math.random() * radiusPresets.length)];
-      setCurrentRadius(chosenRadius);
-      applyRadiusVariables(chosenRadius);
-      try {
-        localStorage.setItem("prabhu_portfolio_radius_id", chosenRadius.id);
-      } catch {}
+      // 3. Corner Radius: Keep fixed to Curved by default on every page load/refresh
+      const defaultCurvedRadius =
+        radiusPresets.find((r) => r.id === "curved") ?? radiusPresets[3];
+      setCurrentRadius(defaultCurvedRadius);
+      applyRadiusVariables(defaultCurvedRadius);
 
       // 4. Fast Track
       const savedFastTrack = localStorage.getItem("fastTrackMode");
@@ -100,7 +93,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     } catch {
       // localStorage might fail in restricted iframe, fallback smoothly
       applyColorThemeVariables(curatedThemes[0]);
-      applyRadiusVariables(radiusPresets[2]);
+      applyRadiusVariables(radiusPresets[3]);
     }
   }, []);
 
@@ -185,27 +178,18 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
   };
 
   const randomizeTheme = () => {
-    // Pick a different theme than current
+    // Pick a different color theme than current (keep corner radius fixed to Curved)
     const availableThemes = curatedThemes.filter((t) => t.id !== currentColorTheme.id);
     const chosenTheme =
       availableThemes.length > 0
         ? availableThemes[Math.floor(Math.random() * availableThemes.length)]
         : curatedThemes[0];
 
-    const availableRadii = radiusPresets.filter((r) => r.id !== currentRadius.id);
-    const chosenRadius =
-      availableRadii.length > 0
-        ? availableRadii[Math.floor(Math.random() * availableRadii.length)]
-        : radiusPresets[2];
-
     setCurrentColorTheme(chosenTheme);
     applyColorThemeVariables(chosenTheme);
-    setCurrentRadius(chosenRadius);
-    applyRadiusVariables(chosenRadius);
 
     try {
       localStorage.setItem("prabhu_portfolio_color_id", chosenTheme.id);
-      localStorage.setItem("prabhu_portfolio_radius_id", chosenRadius.id);
     } catch {}
   };
 

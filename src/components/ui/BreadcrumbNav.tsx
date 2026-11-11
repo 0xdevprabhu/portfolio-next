@@ -51,7 +51,7 @@ export function BreadcrumbNav() {
   return (
     <nav
       aria-label="Breadcrumb"
-      className="hidden md:flex items-center text-xs font-medium text-slate-500 dark:text-slate-400 py-2 px-4 sm:px-6 max-w-7xl mx-auto w-full pt-20"
+      className="hidden md:flex items-center text-xs font-medium text-slate-500 dark:text-slate-400 pt-20 pb-1.5 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto w-full"
       itemScope
       itemType="https://schema.org/BreadcrumbList"
     >

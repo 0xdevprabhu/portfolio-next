@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { useTheme } from "../theme/ThemeProvider";
 import {
@@ -9,60 +9,128 @@ import {
   Layers,
   Award,
   Briefcase,
+  GraduationCap,
   Mail,
-  Zap,
-  Moon,
-  Sun,
   FileDown,
   Palette,
   Menu,
   X,
+  Send,
 } from "lucide-react";
 
 const navLinks = [
   { href: "#home", label: "Home", icon: Home },
   { href: "#about", label: "About", icon: User },
   { href: "#skills", label: "Skills", icon: Layers },
-  { href: "#certifications", label: "Certificates", icon: Award },
+  { href: "#experience", label: "Experience", icon: GraduationCap },
   { href: "#projects", label: "Projects", icon: Briefcase },
+  { href: "#certifications", label: "Certificates", icon: Award },
   { href: "#contact", label: "Contact", icon: Mail },
 ];
 
 export function Navbar() {
-  const {
-    isDarkMode,
-    toggleDarkMode,
-    currentColorTheme,
-    setIsThemeCustomizerOpen,
-    isFastTrack,
-    toggleFastTrack,
-  } = useTheme();
+  const { currentColorTheme, setIsThemeCustomizerOpen } = useTheme();
 
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
+  const scrollLockRef = useRef<{
+    target: string;
+    targetTop: number;
+    expiresAt: number;
+  } | null>(null);
+
+  const handleSectionNavigate = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+      if (!href.startsWith("#")) return;
+      e.preventDefault();
+
+      const sectionId = href.substring(1);
+      setIsMobileMenuOpen(false);
+      setActiveSection(sectionId);
+
+      const el = document.getElementById(sectionId);
+      const targetTop =
+        sectionId === "home" || !el
+          ? 0
+          : Math.max(0, el.getBoundingClientRect().top + window.scrollY - 24);
+
+      scrollLockRef.current = {
+        target: sectionId,
+        targetTop,
+        expiresAt: Date.now() + 900,
+      };
+
+      window.scrollTo({
+        top: targetTop,
+        behavior: "smooth",
+      });
+
+      if (typeof window !== "undefined") {
+        window.history.replaceState(null, "", href);
+      }
+    },
+    []
+  );
+
   useEffect(() => {
+    const clearLockOnManualInput = () => {
+      scrollLockRef.current = null;
+    };
+
     const handleScroll = () => {
       const scrollPos = window.scrollY || document.documentElement.scrollTop;
       setIsScrolled(scrollPos > 15);
 
-      const sections = navLinks.map((link) => link.href.substring(1));
-      for (const section of sections) {
-        const el = document.getElementById(section);
+      if (scrollLockRef.current) {
+        const { targetTop, expiresAt } = scrollLockRef.current;
+        if (Math.abs(scrollPos - targetTop) <= 10 || Date.now() > expiresAt) {
+          scrollLockRef.current = null;
+        } else {
+          return;
+        }
+      }
+
+      if (scrollPos < 60) {
+        setActiveSection("home");
+        return;
+      }
+
+      const isNearBottom =
+        window.innerHeight + scrollPos >= document.documentElement.scrollHeight - 60;
+      if (isNearBottom) {
+        setActiveSection("contact");
+        return;
+      }
+
+      const focusLine = scrollPos + Math.min(window.innerHeight * 0.35, 260);
+      let currentMatched = "home";
+
+      for (const link of navLinks) {
+        const sectionId = link.href.substring(1);
+        const el = document.getElementById(sectionId);
         if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top <= 200 && rect.bottom >= 200) {
-            setActiveSection(section);
-            break;
+          const sectionTop = el.getBoundingClientRect().top + scrollPos;
+          if (sectionTop <= focusLine) {
+            currentMatched = sectionId;
           }
         }
       }
+
+      setActiveSection(currentMatched);
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
+    window.addEventListener("wheel", clearLockOnManualInput, { passive: true });
+    window.addEventListener("touchstart", clearLockOnManualInput, { passive: true });
     handleScroll();
-    return () => window.removeEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("wheel", clearLockOnManualInput);
+      window.removeEventListener("touchstart", clearLockOnManualInput);
+    };
   }, []);
 
   return (
@@ -75,10 +143,11 @@ export function Navbar() {
             : "bg-white/80 dark:bg-slate-900/80 sm:bg-transparent backdrop-blur-md sm:backdrop-blur-none border-b border-slate-200/40 dark:border-slate-800/40 sm:border-transparent"
         }`}
       >
-        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-1 sm:gap-4">
+        <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
           {/* Logo / Brand */}
           <Link
             href="#home"
+            onClick={(e) => handleSectionNavigate(e, "#home")}
             className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none shrink-0"
           >
             <div
@@ -92,84 +161,86 @@ export function Navbar() {
                 Prabhu P.
               </span>
               <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 sm:mt-1 whitespace-nowrap">
-                Full Stack & LAMP
+                Full Stack &amp; LAMP
               </span>
             </div>
           </Link>
 
-          {/* Desktop Top Nav Links */}
-          <nav className="hidden lg:flex items-center gap-1 bg-slate-100/80 dark:bg-slate-800/60 p-1.5 rounded-full border border-slate-200/80 dark:border-slate-700/60 backdrop-blur-md">
+          {/* Desktop Top Nav — Crisp Fixed-Icon Width-Expanding Pill */}
+          <nav
+            aria-label="Primary Navigation"
+            className="hidden lg:flex items-center gap-1 bg-white/95 dark:bg-slate-900/90 p-1.5 rounded-full border border-slate-200/85 dark:border-slate-700/70 shadow-sm backdrop-blur-xl"
+          >
             {navLinks.map((link) => {
               const Icon = link.icon;
-              const isActive = activeSection === link.href.substring(1);
+              const sectionId = link.href.substring(1);
+              const isActive = activeSection === sectionId;
+
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs font-medium transition-all duration-200 ${
+                  onClick={(e) => handleSectionNavigate(e, link.href)}
+                  aria-label={link.label}
+                  title={link.label}
+                  className={`flex items-center justify-center rounded-full py-2 text-xs transition-[background-color,color,padding,box-shadow] duration-300 ease-out select-none ${
                     isActive
-                      ? "text-white shadow-xs font-semibold"
-                      : "text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white"
+                      ? "px-4 text-white font-semibold shadow-sm"
+                      : "px-2.5 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100/80 dark:hover:bg-slate-800/80"
                   }`}
-                  style={isActive ? { backgroundColor: currentColorTheme.primary } : {}}
+                  style={
+                    isActive
+                      ? { backgroundColor: currentColorTheme.primary }
+                      : undefined
+                  }
                 >
-                  <Icon className="h-3.5 w-3.5" />
-                  <span>{link.label}</span>
-                </Link>
+                  <Icon className="h-4 w-4 shrink-0" />
+                  <span
+                    className="grid transition-[grid-template-columns,opacity,margin] duration-300 ease-out"
+                    style={{
+                      gridTemplateColumns: isActive ? "1fr" : "0fr",
+                      opacity: isActive ? 1 : 0,
+                      marginLeft: isActive ? "8px" : "0px",
+                    }}
+                  >
+                    <span className="min-w-0 overflow-hidden whitespace-nowrap leading-none py-0.5">
+                      {link.label}
+                    </span>
+                  </span>
+                </a>
               );
             })}
           </nav>
 
-          {/* Action Buttons — Carefully Spaced for Zero Mobile Overflow */}
-          <div className="flex items-center gap-1 sm:gap-2 md:gap-3 shrink-0">
-            {/* Recruiter Fast-Track Button */}
+          {/* Right Controls: Desktop (Theme Modal Trigger + Let's Talk), Mobile (Let's Talk + Hamburger) */}
+          <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
+            {/* Desktop Theme Customizer Button (holds Dark/Light, Fast-Track, & Colors inside modal) */}
             <button
-              onClick={toggleFastTrack}
-              title="Toggle Recruiter Fast-Track Mode"
-              className={`flex items-center gap-1.5 p-2 sm:px-3 sm:py-1.5 rounded-full text-xs font-semibold transition-all border ${
-                isFastTrack
-                  ? "bg-amber-500 text-white border-amber-600 shadow-md ring-2 ring-amber-400/40"
-                  : "bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border-slate-200 dark:border-slate-700 hover:bg-amber-50 dark:hover:bg-amber-950/30 hover:text-amber-600"
-              }`}
-            >
-              <Zap className={`h-3.5 w-3.5 ${isFastTrack ? "fill-white" : ""}`} />
-              <span className="hidden sm:inline">Fast-Track</span>
-            </button>
-
-            {/* Dark Mode Toggle */}
-            <button
-              onClick={toggleDarkMode}
-              aria-label={isDarkMode ? "Switch to light mode" : "Switch to dark mode"}
-              className="p-2 sm:p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
-            >
-              {isDarkMode ? <Sun className="h-4 w-4 text-amber-400" /> : <Moon className="h-4 w-4 text-slate-600" />}
-            </button>
-
-            {/* Palette Trigger */}
-            <button
+              type="button"
               onClick={() => setIsThemeCustomizerOpen(true)}
-              aria-label="Change theme colors"
-              className="p-2 sm:p-2.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors"
+              aria-label="Open Theme & Display Settings"
+              title="Theme, Dark Mode & Fast-Track"
+              className="hidden lg:flex items-center justify-center p-2.5 rounded-full bg-white/95 dark:bg-slate-800/90 text-slate-700 dark:text-slate-200 border border-slate-200/85 dark:border-slate-700 hover:bg-slate-100 dark:hover:bg-slate-700 shadow-xs transition-all hover:scale-105"
             >
-              <Palette className="h-4 w-4 text-primary" />
+              <Palette className="h-4 w-4" style={{ color: currentColorTheme.primary }} />
             </button>
 
-            {/* Resume Quick Link (Desktop) */}
+            {/* Primary Contact CTA: Let's Talk Pill */}
             <a
-              href="/assets/documents/Prabhu's_Resume.pdf"
-              download
-              className="hidden sm:flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold text-white shadow-xs transition-transform hover:scale-105 active:scale-95"
-              style={{ backgroundColor: currentColorTheme.primary }}
+              href="#contact"
+              onClick={(e) => handleSectionNavigate(e, "#contact")}
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 py-2 sm:px-5 sm:py-2.5 rounded-full bg-[#070b2b] hover:bg-[#11194d] dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-950 text-xs sm:text-[13px] font-bold shadow-[0_6px_18px_-4px_rgba(7,11,43,0.35)] transition-all duration-200 hover:scale-[1.03] active:scale-95 whitespace-nowrap shrink-0"
             >
-              <FileDown className="h-3.5 w-3.5" />
-              <span>Resume</span>
+              <span>Let&apos;s Talk</span>
+              <Send className="h-3.5 w-3.5 shrink-0" />
             </a>
 
-            {/* Mobile Burger Toggle */}
+            {/* Mobile Burger Toggle Only */}
             <button
+              type="button"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               aria-label="Toggle mobile menu"
-              className="p-2 lg:hidden rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
+              className="p-2 lg:hidden rounded-xl bg-slate-100/90 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
             >
               {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
             </button>
@@ -183,10 +254,10 @@ export function Navbar() {
               const Icon = link.icon;
               const isActive = activeSection === link.href.substring(1);
               return (
-                <Link
+                <a
                   key={link.href}
                   href={link.href}
-                  onClick={() => setIsMobileMenuOpen(false)}
+                  onClick={(e) => handleSectionNavigate(e, link.href)}
                   className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
                     isActive
                       ? "text-white font-semibold shadow-xs"
@@ -196,19 +267,34 @@ export function Navbar() {
                 >
                   <Icon className="h-4 w-4" />
                   <span>{link.label}</span>
-                </Link>
+                </a>
               );
             })}
-            <a
-              href="/assets/documents/Prabhu's_Resume.pdf"
-              download
-              onClick={() => setIsMobileMenuOpen(false)}
-              className="flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold text-white shadow-sm mt-3"
-              style={{ backgroundColor: currentColorTheme.primary }}
-            >
-              <FileDown className="h-4 w-4" />
-              <span>Download CV</span>
-            </a>
+
+            <div className="pt-2 grid grid-cols-2 gap-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  setIsThemeCustomizerOpen(true);
+                }}
+                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700"
+              >
+                <Palette className="h-4 w-4" style={{ color: currentColorTheme.primary }} />
+                <span>Theme &amp; Mode</span>
+              </button>
+
+              <a
+                href="/assets/documents/Prabhu's_Resume.pdf"
+                download
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-white shadow-sm"
+                style={{ backgroundColor: currentColorTheme.primary }}
+              >
+                <FileDown className="h-4 w-4" />
+                <span>Download CV</span>
+              </a>
+            </div>
           </div>
         )}
       </header>
@@ -220,9 +306,10 @@ export function Navbar() {
             const Icon = link.icon;
             const isActive = activeSection === link.href.substring(1);
             return (
-              <Link
+              <a
                 key={link.href}
                 href={link.href}
+                onClick={(e) => handleSectionNavigate(e, link.href)}
                 className={`p-2 rounded-full transition-all duration-200 ${
                   isActive
                     ? "text-white shadow-md scale-110"
@@ -232,7 +319,7 @@ export function Navbar() {
                 aria-label={link.label}
               >
                 <Icon className="h-4 w-4" />
-              </Link>
+              </a>
             );
           })}
         </div>
