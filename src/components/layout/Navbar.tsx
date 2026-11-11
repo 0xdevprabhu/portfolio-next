@@ -2,6 +2,8 @@
 
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
+import Image from "next/image";
+import { profileData } from "@/data/profile";
 import { useTheme } from "../theme/ThemeProvider";
 import {
   Home,
@@ -144,24 +146,51 @@ export function Navbar() {
         }`}
       >
         <div className="w-full max-w-7xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-20 flex items-center justify-between gap-2 sm:gap-4">
-          {/* Logo / Brand */}
+          {/* Logo / Brand with Personal Avatar Badge (Option 1) */}
           <Link
             href="#home"
             onClick={(e) => handleSectionNavigate(e, "#home")}
-            className="flex items-center gap-2 sm:gap-2.5 group focus:outline-none shrink-0"
+            className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           >
-            <div
-              className="w-8 h-8 sm:w-10 sm:h-10 rounded-xl flex items-center justify-center text-white font-bold text-base sm:text-lg shadow-md transition-transform group-hover:scale-105 shrink-0"
-              style={{ backgroundColor: currentColorTheme.primary }}
-            >
-              P
+            {/* Micro Squircle Photo Badge + Live Online Pulsing Dot */}
+            <div className="relative shrink-0">
+              <div
+                className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl p-[1.5px] shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg overflow-hidden"
+                style={{
+                  background: `linear-gradient(135deg, ${currentColorTheme.accent}, ${currentColorTheme.primary})`,
+                  boxShadow: `0 4px 14px -2px ${currentColorTheme.glow}`,
+                }}
+              >
+                <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-100 dark:bg-slate-800">
+                  <Image
+                    src={profileData.avatar}
+                    alt={profileData.name}
+                    width={44}
+                    height={44}
+                    priority
+                    className="w-full h-full object-cover object-top scale-110 group-hover:scale-115 transition-transform duration-300"
+                  />
+                </div>
+              </div>
+
+              {/* Pulsing Emerald Online Indicator */}
+              <span
+                className="absolute -bottom-0.5 -right-0.5 flex h-3 w-3"
+                title="Available for Opportunities"
+              >
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500 border-2 border-white dark:border-slate-900" />
+              </span>
             </div>
+
             <div className="flex flex-col">
-              <span className="font-bold text-sm sm:text-base md:text-lg tracking-tight text-slate-900 dark:text-white leading-none whitespace-nowrap">
+              <span className="font-extrabold text-sm sm:text-base md:text-lg tracking-tight text-slate-900 dark:text-white leading-none whitespace-nowrap">
                 Prabhu P.
               </span>
-              <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-0.5 sm:mt-1 whitespace-nowrap">
-                Full Stack &amp; LAMP
+              <span className="text-[10px] sm:text-[11px] font-medium text-slate-500 dark:text-slate-400 mt-1 whitespace-nowrap flex items-center gap-1.5">
+                <span>Full Stack &amp; LAMP</span>
+                <span className="hidden sm:inline w-1 h-1 rounded-full bg-slate-300 dark:bg-slate-700" />
+                <span className="hidden sm:inline font-mono text-[10px] text-slate-400 dark:text-slate-500">@0xdevprabhu</span>
               </span>
             </div>
           </Link>
