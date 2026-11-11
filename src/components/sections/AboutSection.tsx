@@ -27,13 +27,14 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
 {`{
   "name": "Prabhu P",
   "handle": "@0xdevprabhu",
-  "role": "Full Stack Developer & LAMP Stack Specialist",
+  "role": "Full Stack Developer & Freelance Web Architect",
   "company": "Noxlay Cyber Tech",
   "location": "Sivakasi, Tamil Nadu, India",
+  "freelanceServices": ["Custom Websites", "E-Commerce", "B2B Portals", "AI SaaS"],
   "primaryStack": ["PHP", "MySQL", "JavaScript", "Linux", "Apache", "LAMP"],
   "modernStack": ["Next.js", "React", "TypeScript", "Tailwind CSS"],
   "aiExperience": ["Gemini API", "Claude", "ChatGPT", "Stockfish AI"],
-  "status": "Open for high-impact engineering & roles"
+  "status": "Open for Freelance Projects & Engineering Roles"
 }`}
         </pre>
       ),
@@ -176,13 +177,13 @@ export function AboutSection({ onOpenResumePreview }: AboutSectionProps) {
           >
             <div className="p-6 sm:p-8 rounded-3xl bg-white dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700/80 shadow-xs space-y-4">
               <h3 className="text-xl font-bold text-slate-900 dark:text-white">
-                Full Stack Developer & LAMP Specialist in Sivakasi
+                Full Stack Developer &amp; Freelancer in Sivakasi
               </h3>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Known online as <span className="font-semibold text-slate-900 dark:text-white">Prabhu P (@0xdevprabhu)</span>, I am a dedicated <span className="font-semibold text-slate-900 dark:text-white">Full Stack Developer</span> based in Sivakasi, Tamil Nadu, India. My journey in tech is driven by an insatiable curiosity to build reliable web applications through clean code, relational databases, and modern UI engineering.
+                Known online as <span className="font-semibold text-slate-900 dark:text-white">Prabhu P (@0xdevprabhu)</span>, I am a dedicated <span className="font-semibold text-slate-900 dark:text-white">Full Stack Developer &amp; Freelance Web Designer</span> based in Sivakasi, Tamil Nadu, India. My journey in tech is driven by an insatiable curiosity to build reliable web applications through clean code, relational databases, and modern UI engineering.
               </p>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
-                Currently, I engineer client-facing solutions and platforms as a developer at <span className="font-semibold text-slate-900 dark:text-white">Noxlay Cyber Tech</span>, specializing in the complete LAMP stack (Linux, Apache, MySQL, PHP) alongside modern Next.js/React ecosystems and real-world AI integrations.
+                Alongside engineering client platforms at <span className="font-semibold text-slate-900 dark:text-white">Noxlay Cyber Tech</span>, I also work as an active <span className="font-semibold text-slate-900 dark:text-white">freelancer in Sivakasi</span> and remotely — building custom business websites, e-commerce stores, B2B estimation portals, and AI-powered web apps using the LAMP stack, Next.js, and React.
               </p>
 
               {/* Direct Info Badges */}

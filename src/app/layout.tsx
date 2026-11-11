@@ -18,11 +18,11 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://0xdevprabhu.vercel.app"),
   title: {
     default:
-      "0xdevprabhu | Prabhu P - Elite Full Stack Developer in Sivakasi | Noxlay Cyber Tech",
+      "0xdevprabhu | Prabhu P - Full Stack Developer & Freelancer in Sivakasi | Noxlay Cyber Tech",
     template: "%s | Prabhu P (@0xdevprabhu)",
   },
   description:
-    "Official portfolio of Prabhu P (@0xdevprabhu), Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi, Tamil Nadu. Specialist in Next.js, React, PHP, MySQL, REST APIs, and AI integrations. View 8+ live projects, verified certifications, and contact for hire.",
+    "Official portfolio of Prabhu P (@0xdevprabhu), Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech, and Freelance Web Developer in Sivakasi, Tamil Nadu. Available for freelance websites, e-commerce stores, Next.js, React, PHP, MySQL, and AI apps. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & more.",
   applicationName: "0xdevprabhu Portfolio",
   authors: [
     { name: "Prabhu P", url: "https://0xdevprabhu.vercel.app" },
@@ -50,26 +50,43 @@ export const metadata: Metadata = {
     "Noxlay Prabhu",
     "Noxlay tech team",
 
-    // Sivakasi & Tamil Nadu Location Keywords
+    // Sivakasi & Tamil Nadu Freelancer / Developer Location Keywords
     "Sivakasi developer",
+    "Sivakasi freelancer",
+    "freelancer in Sivakasi",
+    "freelance web developer in Sivakasi",
+    "freelance full stack developer Sivakasi",
+    "freelance software developer Sivakasi",
+    "hire freelancer in Sivakasi",
     "web developer in Sivakasi",
     "full stack developer in Sivakasi",
     "software developer Sivakasi",
     "freelance developer Sivakasi",
+    "freelance web designer Sivakasi",
+    "best freelancer in Sivakasi",
     "Sivakasi web designer",
+    "custom website developer Sivakasi",
+    "ecommerce website developer Sivakasi",
+    "fireworks website developer Sivakasi",
     "Tamil Nadu developer",
+    "Tamil Nadu freelance web developer",
     "best developer in Sivakasi",
     "web development services Sivakasi",
     "Sivakasi IT specialist",
     "Virudhunagar developer",
+    "freelance web developer Virudhunagar",
     "Madurai web developer",
+    "freelance web developer India",
 
     // Tech Stack & Engineering Specializations
     "LAMP stack specialist",
     "LAMP stack developer",
     "PHP MySQL developer",
+    "PHP freelance developer India",
     "Next.js developer",
+    "Next.js freelance developer",
     "React developer",
+    "React freelance developer",
     "Full Stack Developer",
     "Frontend developer Sivakasi",
     "Backend developer Sivakasi",
@@ -81,6 +98,8 @@ export const metadata: Metadata = {
     "Stockfish AI developer",
 
     // Project & Intent Searches
+    "ZipZap Jobs Portal",
+    "ZipZap Jobs developer",
     "Grocerzap developer",
     "Sirenpyro developer",
     "ChessMate AI developer",
@@ -89,6 +108,7 @@ export const metadata: Metadata = {
     "Hire web developer in Sivakasi",
     "Hire full stack developer",
     "Hire freelance developer Tamil Nadu",
+    "0xdevprabhu freelancer",
     "0xdevprabhu projects",
     "0xdevprabhu contact",
     "Prabhu resume",
@@ -121,15 +141,15 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://0xdevprabhu.vercel.app/",
     siteName: "0xdevprabhu | Prabhu P Portfolio",
-    title: "0xdevprabhu | Prabhu P - Elite Full Stack Developer in Sivakasi | Noxlay Cyber Tech",
+    title: "0xdevprabhu | Prabhu P - Full Stack Developer & Freelancer in Sivakasi",
     description:
-      "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi. View live enterprise client projects, AI tools, credentials, and hire Prabhu P.",
+      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & hire for freelance or full-time projects.",
     images: [
       {
         url: "/assets/images/profile.jpg",
         width: 1200,
         height: 630,
-        alt: "Prabhu P (@0xdevprabhu) - Full Stack Developer in Sivakasi",
+        alt: "Prabhu P (@0xdevprabhu) - Full Stack Developer & Freelancer in Sivakasi",
       },
     ],
   },
@@ -137,9 +157,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@0xdevprabhu",
     creator: "@0xdevprabhu",
-    title: "Prabhu P (@0xdevprabhu) | Elite Full Stack Developer in Sivakasi",
+    title: "Prabhu P (@0xdevprabhu) | Full Stack Developer & Freelancer in Sivakasi",
     description:
-      "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi. Explore live projects, AI chess engine, and get in touch.",
+      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI & hire.",
     images: ["/assets/images/profile.jpg"],
   },
   robots: {

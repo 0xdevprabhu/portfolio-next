@@ -1,12 +1,13 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import { skillCategories } from "@/data/skills";
 import { useTheme } from "../theme/ThemeProvider";
-import { Github, ExternalLink, Code2, Cpu, Wrench, Layers } from "lucide-react";
+import { Code2, Cpu, Wrench, Layers } from "lucide-react";
 import { SkillItem } from "@/types";
 import { motion } from "framer-motion";
+import { GitHubActivityCard } from "./GitHubActivityCard";
 
 interface SkillCardProps {
   skill: SkillItem;
@@ -116,18 +117,6 @@ function SkillCard({ skill, primaryColor }: SkillCardProps) {
 
 export function SkillsSection() {
   const { currentColorTheme } = useTheme();
-  const [ghActivitySquares, setGhActivitySquares] = useState<number[]>([]);
-
-  useEffect(() => {
-    // Generate simulated commit intensity squares (48 squares)
-    const squares: number[] = [];
-    for (let i = 0; i < 52; i++) {
-      // 0 = empty, 1 = low, 2 = medium, 3 = high
-      const val = Math.random() > 0.4 ? Math.floor(Math.random() * 3) + 1 : 0;
-      squares.push(val);
-    }
-    setGhActivitySquares(squares);
-  }, []);
 
   return (
     <section id="skills" className="py-20 px-4 sm:px-6 lg:px-8 w-full max-w-full overflow-hidden">
@@ -206,91 +195,8 @@ export function SkillsSection() {
             </motion.div>
           ))}
 
-          {/* GitHub Activity Wall */}
-          <motion.div
-            initial={{ opacity: 0, y: 35 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.2 }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="p-4 sm:p-8 rounded-3xl bg-slate-950 border border-slate-800 text-white shadow-xl w-full max-w-full overflow-hidden"
-          >
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
-              <div className="flex items-center gap-3">
-                <div className="p-2.5 rounded-xl bg-slate-800 text-white">
-                  <Github className="h-5 w-5" />
-                </div>
-                <div>
-                  <h3 className="text-lg font-bold text-white">Open Source Activity</h3>
-                  <p className="text-xs text-slate-400">
-                    Real-time activity and contributions from{" "}
-                    <a
-                      href="https://github.com/0xdevprabhu"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-primary hover:underline font-semibold"
-                    >
-                      @0xdevprabhu
-                    </a>
-                  </p>
-                </div>
-              </div>
-
-              <a
-                href="https://github.com/0xdevprabhu"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-xs font-semibold text-slate-200 transition-colors"
-              >
-                <span>View GitHub Profile</span>
-                <ExternalLink className="h-3.5 w-3.5" />
-              </a>
-            </div>
-
-            {/* Simulated Contribution Grid */}
-            <div className="pt-2 overflow-x-auto w-full max-w-full">
-              <div className="min-w-[560px]">
-                <div className="grid grid-flow-col grid-rows-4 gap-1.5">
-                  {ghActivitySquares.map((intensity, i) => (
-                    <div
-                      key={i}
-                      className="h-3.5 w-3.5 rounded-xs transition-transform hover:scale-125"
-                      style={{
-                        backgroundColor:
-                          intensity === 0
-                            ? "#1e293b"
-                            : intensity === 1
-                            ? `${currentColorTheme.primary}55`
-                            : intensity === 2
-                            ? `${currentColorTheme.primary}aa`
-                            : currentColorTheme.primary,
-                      }}
-                      title={`Activity index: ${intensity}`}
-                    />
-                  ))}
-                </div>
-                <div className="flex items-center justify-between text-[11px] text-slate-500 mt-3 pt-2 border-t border-slate-900">
-                  <span>Continuous open-source integration</span>
-                  <div className="flex items-center gap-1.5">
-                    <span>Less</span>
-                    <span className="h-2.5 w-2.5 rounded-xs bg-slate-800" />
-                    <span
-                      className="h-2.5 w-2.5 rounded-xs"
-                      style={{ backgroundColor: `${currentColorTheme.primary}55` }}
-                    />
-                    <span
-                      className="h-2.5 w-2.5 rounded-xs"
-                      style={{ backgroundColor: `${currentColorTheme.primary}aa` }}
-                    />
-                    <span
-                      className="h-2.5 w-2.5 rounded-xs"
-                      style={{ backgroundColor: currentColorTheme.primary }}
-                    />
-                    <span>More</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+          {/* Live GitHub Open Source Activity Wall */}
+          <GitHubActivityCard />
         </div>
       </div>
     </section>

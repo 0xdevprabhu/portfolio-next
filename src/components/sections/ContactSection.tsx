@@ -149,10 +149,14 @@ export function ContactSection() {
             Get in Touch
           </span>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white mt-3">
-            Contact Me & Start a Project
+            Contact Me &amp; Start a Project
           </h2>
           <p className="text-slate-600 dark:text-slate-400 text-sm sm:text-base mt-2">
-            Have a project in mind, want to hire, or just want to say hi? My inbox is always open.
+            Looking for a{" "}
+            <span className="font-semibold text-slate-900 dark:text-white">
+              freelance web developer in Sivakasi
+            </span>{" "}
+            or want to hire for a full-stack project? Let&apos;s build something extraordinary together.
           </p>
           <div
             className="h-1 w-12 mx-auto rounded-full mt-3"
@@ -228,8 +232,34 @@ export function ContactSection() {
                 </div>
               </div>
 
+              {/* Freelance Services Availability */}
+              <div className="pt-5 border-t border-slate-100 dark:border-slate-700/60">
+                <div className="flex items-center gap-2 mb-2.5">
+                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
+                  <span className="text-xs font-semibold text-slate-700 dark:text-slate-200 uppercase tracking-wider">
+                    Available for Freelance Projects
+                  </span>
+                </div>
+                <div className="flex flex-wrap gap-1.5">
+                  {[
+                    "Custom Websites",
+                    "E-Commerce Stores",
+                    "B2B / Fireworks Portals",
+                    "Next.js & PHP Apps",
+                    "AI Integration & SEO",
+                  ].map((service) => (
+                    <span
+                      key={service}
+                      className="text-[11px] font-medium px-2.5 py-1 rounded-full bg-slate-100 dark:bg-slate-700/70 text-slate-700 dark:text-slate-200 border border-slate-200/80 dark:border-slate-600/60"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               {/* Social Channels */}
-              <div className="pt-6 border-t border-slate-100 dark:border-slate-700/60">
+              <div className="pt-5 border-t border-slate-100 dark:border-slate-700/60">
                 <span className="text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider block mb-3">
                   Connect on Social Media
                 </span>

@@ -104,10 +104,10 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
             />
           </div>
           {/* Status Badge */}
-          <div className="absolute bottom-1 right-1 flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full shadow-lg">
+          <div className="absolute bottom-1 -right-2 flex items-center gap-1.5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 px-2.5 py-1 rounded-full shadow-lg whitespace-nowrap">
             <span className="h-2 w-2 rounded-full bg-emerald-500 animate-ping" />
             <span className="text-[10px] font-semibold text-slate-700 dark:text-slate-300">
-              Open to Roles
+              Open to Freelance & Roles
             </span>
           </div>
         </motion.div>
@@ -135,7 +135,7 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
             <h1 className="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight text-slate-900 dark:text-white mt-1">
               Prabhu P.
               <span className="sr-only">
-                {" "}— 0xdevprabhu | Elite Full Stack Developer & LAMP Stack Specialist at Noxlay Cyber Tech, Sivakasi
+                {" "}— 0xdevprabhu | Elite Full Stack Developer, Freelance Web Developer & LAMP Stack Specialist at Noxlay Cyber Tech, Sivakasi
               </span>
             </h1>
           </div>
@@ -165,7 +165,11 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
             >
               {profileData.company}
             </span>
-            {" "}in Sivakasi, India. Crafting resilient web architectures, enterprise client portals, dynamic Next.js interfaces, and AI-driven applications.
+            {" "}in Sivakasi, India. Also available as a{" "}
+            <span className="font-semibold text-slate-900 dark:text-white">
+              Freelance Web Developer
+            </span>{" "}
+            crafting custom business websites, e-commerce stores, Next.js interfaces, and AI-driven SaaS applications.
           </p>
 
           <div className="flex items-center justify-center gap-2 text-xs font-medium text-slate-500 dark:text-slate-400 pt-1">

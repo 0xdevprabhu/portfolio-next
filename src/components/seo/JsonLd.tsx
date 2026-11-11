@@ -16,18 +16,21 @@ export function JsonLd() {
       "devprabhu",
       "Prabhu",
       "Prabhu Sivakasi",
+      "Sivakasi Freelancer Prabhu",
       "Noxlay Developer Prabhu",
       "Prabhu P Developer",
     ],
     jobTitle: [
       "Full Stack Developer",
+      "Freelance Web Developer",
+      "Freelancer in Sivakasi",
       "LAMP Stack Specialist",
       "AI Web Applications Engineer",
       "Web Developer",
       "Software Engineer",
     ],
     description:
-      "Certified LAMP Stack Specialist and Full Stack Developer at Noxlay Cyber Tech based in Sivakasi, Tamil Nadu. Experienced in Next.js, React, PHP, MySQL, REST APIs, and AI integrations.",
+      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech, and Freelance Web Developer in Sivakasi, Tamil Nadu. Builds custom business websites, e-commerce platforms, B2B portals, Next.js, React, PHP, MySQL, and AI applications.",
     url: baseUrl,
     image: `${baseUrl}/assets/images/profile.jpg`,
     email: "mailto:0xdevprabhu@gmail.com",
@@ -159,15 +162,15 @@ export function JsonLd() {
     ],
   };
 
-  // 4. ProfessionalService / LocalBusiness Schema (Ranks high for "Sivakasi developer")
+  // 4. ProfessionalService / LocalBusiness Schema (Ranks high for "Sivakasi developer" & "Sivakasi freelancer")
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#service`,
-    name: "Prabhu P - Full Stack & Web Developer Sivakasi",
+    name: "Prabhu P (@0xdevprabhu) - Freelance Web & Full Stack Developer Sivakasi",
     image: `${baseUrl}/assets/images/profile.jpg`,
     description:
-      "Professional web development, LAMP stack engineering, e-commerce solutions, and custom AI web applications by Prabhu P in Sivakasi, Tamil Nadu, India.",
+      "Freelance web development, custom business websites, LAMP stack engineering, e-commerce solutions, B2B fireworks catalogs, and AI web applications by Prabhu P in Sivakasi, Tamil Nadu, India.",
     url: baseUrl,
     telephone: "+919344095995",
     priceRange: "$$",
@@ -207,6 +210,47 @@ export function JsonLd() {
       "India",
       "Remote Worldwide",
     ],
+    hasOfferCatalog: {
+      "@type": "OfferCatalog",
+      name: "Freelance Web & Software Development Services",
+      itemListElement: [
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Freelance Custom Business Website Development in Sivakasi",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "E-Commerce & Payment Gateway Web Development",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Fireworks & B2B Digital Catalog / WhatsApp Estimation Portals",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "Next.js, React, PHP & MySQL Full Stack Engineering",
+          },
+        },
+        {
+          "@type": "Offer",
+          itemOffered: {
+            "@type": "Service",
+            name: "AI Chatbot & Generative AI Web Integrations",
+          },
+        },
+      ],
+    },
     founder: {
       "@id": `${baseUrl}/#person`,
     },

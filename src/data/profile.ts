@@ -1,8 +1,8 @@
 export const profileData = {
   name: "Prabhu P",
-  title: "Full Stack Developer & LAMP Stack Specialist",
-  tagline: "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech.",
-  bio: "Passionate about building secure, scalable, AI-integrated web solutions. From relational database modeling and rock-solid PHP/API architecture to dynamic, animated React & Next.js user interfaces.",
+  title: "Full Stack Developer, Freelancer & LAMP Stack Specialist",
+  tagline: "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech & Freelance Web Architect.",
+  bio: "Passionate about building secure, scalable, AI-integrated web solutions. Available for freelance custom websites, e-commerce platforms, B2B portals, and Next.js/PHP architectures in Sivakasi & globally.",
   company: "Noxlay Cyber Tech",
   currentRole: "Full Stack Developer",
   location: "Sivakasi, Tamil Nadu, India",
@@ -13,6 +13,7 @@ export const profileData = {
   resumePath: "/assets/documents/Prabhu's_Resume.pdf",
   rolesToType: [
     "Full Stack Developer",
+    "Freelance Web Developer",
     "LAMP Stack Specialist",
     "AI Integration Engineer",
     "Modern Web Architect"
