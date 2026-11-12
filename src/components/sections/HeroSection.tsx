@@ -246,7 +246,7 @@ export function HeroSection({ onOpenResumePreview }: HeroSectionProps) {
               </span>
               <span className="sr-only">
                 {" "}
-                - Full Stack Developer &amp; Freelance Web Developer in Sivakasi, Tamil Nadu
+                - Elite Full Stack Developer &amp; Freelance Web Developer in Sivakasi (@0xdevprabhu)
               </span>
             </h1>
 

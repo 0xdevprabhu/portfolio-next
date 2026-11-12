@@ -2,26 +2,25 @@ import { MetadataRoute } from "next";
 
 export default function manifest(): MetadataRoute.Manifest {
   return {
-    name: "0xdevprabhu | Prabhu P Portfolio",
-    short_name: "0xdevprabhu",
+    name: "Prabhu P - Elite Full Stack Developer",
+    short_name: "Prabhu P",
     description:
-      "Certified LAMP Stack Specialist & Full Stack Developer at Noxlay Cyber Tech, Sivakasi. View projects, experience, and contact information.",
+      "Prabhu P (@0xdevprabhu) - Elite Full Stack Developer, LAMP Stack Specialist & Freelance Web Developer in Sivakasi, Tamil Nadu.",
     start_url: "/",
     display: "standalone",
     background_color: "#020617",
     theme_color: "#3b82f6",
     icons: [
       {
-        src: "/assets/images/profile.jpg",
+        src: "/icon-192x192.png",
         sizes: "192x192",
-        type: "image/jpeg",
+        type: "image/png",
       },
       {
-        src: "/assets/images/profile.jpg",
+        src: "/icon-512x512.png",
         sizes: "512x512",
-        type: "image/jpeg",
+        type: "image/png",
       },
     ],
   };
 }
-

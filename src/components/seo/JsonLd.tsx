@@ -5,36 +5,32 @@ import { projectsData } from "@/data/projects";
 export function JsonLd() {
   const baseUrl = "https://0xdevprabhu.vercel.app";
 
-  // 1. Person Schema (Identity, Handle, Company, Location, Socials)
+  // 1. Person Schema (Primary Authoritative Entity for Prabhu P / @0xdevprabhu)
   const personSchema = {
     "@context": "https://schema.org",
     "@type": "Person",
     "@id": `${baseUrl}/#person`,
-    name: "Prabhu P",
+    name: profileData.name,
     alternateName: [
       "0xdevprabhu",
+      "Prabhu P.",
       "devprabhu",
-      "Prabhu",
       "Prabhu Sivakasi",
-      "Sivakasi Freelancer Prabhu",
-      "Noxlay Developer Prabhu",
       "Prabhu P Developer",
     ],
     jobTitle: [
+      "Elite Full Stack Developer",
       "Full Stack Developer",
       "Freelance Web Developer",
-      "Freelancer in Sivakasi",
       "LAMP Stack Specialist",
       "AI Web Applications Engineer",
-      "Web Developer",
-      "Software Engineer",
     ],
     description:
-      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech, and Freelance Web Developer in Sivakasi, Tamil Nadu. Builds custom business websites, e-commerce platforms, B2B portals, Next.js, React, PHP, MySQL, and AI applications.",
+      "Prabhu P (@0xdevprabhu) is an Elite Full Stack Developer, Certified LAMP Stack Specialist & Freelance Web Developer in Sivakasi, Tamil Nadu, building scalable SaaS systems, Next.js interfaces, PHP/MySQL platforms, and AI applications.",
     url: baseUrl,
     image: `${baseUrl}/assets/images/profile.jpg`,
-    email: "mailto:0xdevprabhu@gmail.com",
-    telephone: "+919344095995",
+    email: `mailto:${profileData.email}`,
+    telephone: profileData.phone,
     gender: "Male",
     nationality: {
       "@type": "Country",
@@ -49,7 +45,7 @@ export function JsonLd() {
     },
     homeLocation: {
       "@type": "Place",
-      name: "Sivakasi, Tamil Nadu, India",
+      name: profileData.location,
       geo: {
         "@type": "GeoCoordinates",
         latitude: "9.4533",
@@ -58,15 +54,9 @@ export function JsonLd() {
     },
     worksFor: {
       "@type": "Organization",
-      name: "Noxlay Cyber Tech",
+      name: profileData.company,
       url: "https://www.noxlay.com/",
       sameAs: ["https://www.noxlay.com/"],
-      location: {
-        "@type": "PostalAddress",
-        addressLocality: "Sivakasi",
-        addressRegion: "Tamil Nadu",
-        addressCountry: "IN",
-      },
     },
     knowsAbout: [
       "Full Stack Web Development",
@@ -79,7 +69,7 @@ export function JsonLd() {
       "Stockfish AI Chess Engine",
       "E-Commerce Architecture & Payment Gateways",
       "Relational Database Design (MySQL)",
-      "Sivakasi Web Development & IT Solutions",
+      "Web Security (SQLi, XSS, CSRF Protection)",
     ],
     sameAs: [
       "https://github.com/0xdevprabhu",
@@ -90,28 +80,27 @@ export function JsonLd() {
     ],
   };
 
-  // 2. WebSite Schema (with SearchAction / Sitelinks metadata)
+  // 2. WebSite Schema (Explicit short Site Name "Prabhu P" for Google SERP Site Name override)
   const websiteSchema = {
     "@context": "https://schema.org",
     "@type": "WebSite",
     "@id": `${baseUrl}/#website`,
     url: baseUrl,
-    name: "0xdevprabhu | Prabhu P Portfolio",
+    name: "Prabhu P",
     alternateName: [
-      "Prabhu P Portfolio",
       "0xdevprabhu",
-      "Noxlay Developer Prabhu",
-      "Sivakasi Full Stack Developer",
+      "Prabhu P - Elite Full Stack Developer",
+      "Prabhu P Portfolio",
     ],
     description:
-      "Official portfolio website of Prabhu P (@0xdevprabhu), Full Stack Developer & LAMP Stack Specialist at Noxlay Cyber Tech, Sivakasi.",
+      "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi, India.",
     publisher: {
       "@id": `${baseUrl}/#person`,
     },
     inLanguage: ["en-US", "ta-IN"],
   };
 
-  // 3. BreadcrumbList Schema (Crucial for Google Rich Breadcrumb Snippets)
+  // 3. BreadcrumbList Schema (Clean 3-level hierarchy for Google SERP Breadcrumb trail)
   const breadcrumbSchema = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
@@ -120,57 +109,85 @@ export function JsonLd() {
       {
         "@type": "ListItem",
         position: 1,
-        name: "Home",
-        item: `${baseUrl}/`,
+        name: "Prabhu P",
+        item: baseUrl,
       },
       {
         "@type": "ListItem",
         position: 2,
-        name: "About Prabhu P",
+        name: "Elite Full Stack Developer",
         item: `${baseUrl}/#about`,
       },
       {
         "@type": "ListItem",
         position: 3,
-        name: "Technical Skills",
-        item: `${baseUrl}/#skills`,
-      },
-      {
-        "@type": "ListItem",
-        position: 4,
-        name: "Experience at Noxlay Cyber Tech",
-        item: `${baseUrl}/#experience`,
-      },
-      {
-        "@type": "ListItem",
-        position: 5,
-        name: "Client & AI Projects",
+        name: "Portfolio & Projects",
         item: `${baseUrl}/#projects`,
-      },
-      {
-        "@type": "ListItem",
-        position: 6,
-        name: "Verified Certifications",
-        item: `${baseUrl}/#certifications`,
-      },
-      {
-        "@type": "ListItem",
-        position: 7,
-        name: "Contact & Hire Developer",
-        item: `${baseUrl}/#contact`,
       },
     ],
   };
 
-  // 4. ProfessionalService / LocalBusiness Schema (Ranks high for "Sivakasi developer" & "Sivakasi freelancer")
+  // 4. SiteNavigationElement Schema (Helps Google understand portfolio sections & sitelinks)
+  const siteNavigationSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": `${baseUrl}/#navigation`,
+    name: "Portfolio Navigation",
+    itemListElement: [
+      {
+        "@type": "SiteNavigationElement",
+        position: 1,
+        name: "Home",
+        url: `${baseUrl}/#home`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 2,
+        name: "About Me",
+        url: `${baseUrl}/#about`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 3,
+        name: "Skills & GitHub",
+        url: `${baseUrl}/#skills`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 4,
+        name: "Experience & Education",
+        url: `${baseUrl}/#experience`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 5,
+        name: "Featured Projects",
+        url: `${baseUrl}/#projects`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 6,
+        name: "Certifications",
+        url: `${baseUrl}/#certifications`,
+      },
+      {
+        "@type": "SiteNavigationElement",
+        position: 7,
+        name: "Contact & Hire",
+        url: `${baseUrl}/#contact`,
+      },
+    ],
+  };
+
+  // 5. ProfessionalService Schema (Local & Freelance SEO)
   const professionalServiceSchema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#service`,
-    name: "Prabhu P (@0xdevprabhu) - Freelance Web & Full Stack Developer Sivakasi",
-    image: `${baseUrl}/assets/images/profile.jpg`,
+    name: "Prabhu P (@0xdevprabhu) - Elite Full Stack & Freelance Web Developer",
+    image: `${baseUrl}/icon-512x512.png`,
     description:
-      "Freelance web development, custom business websites, LAMP stack engineering, e-commerce solutions, B2B fireworks catalogs, and AI web applications by Prabhu P in Sivakasi, Tamil Nadu, India.",
+      "Freelance web development, custom business websites, LAMP stack engineering, e-commerce solutions, Next.js apps, and AI web portals by Prabhu P in Sivakasi, Tamil Nadu, India.",
     url: baseUrl,
     telephone: "+919344095995",
     priceRange: "$$",
@@ -232,13 +249,6 @@ export function JsonLd() {
           "@type": "Offer",
           itemOffered: {
             "@type": "Service",
-            name: "Fireworks & B2B Digital Catalog / WhatsApp Estimation Portals",
-          },
-        },
-        {
-          "@type": "Offer",
-          itemOffered: {
-            "@type": "Service",
             name: "Next.js, React, PHP & MySQL Full Stack Engineering",
           },
         },
@@ -256,13 +266,13 @@ export function JsonLd() {
     },
   };
 
-  // 5. ItemList Schema for Featured Projects (Rich Project Search snippets)
+  // 6. ItemList Schema for Featured Projects
   const projectsListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
     name: "Portfolio Projects by Prabhu P",
     description:
-      "Web applications, live client portals, and AI systems engineered by Prabhu P at Noxlay Cyber Tech.",
+      "Production web platforms, freelance client portals, and AI tools developed by Prabhu P (@0xdevprabhu).",
     numberOfItems: projectsData.length,
     itemListElement: projectsData.map((project, index) => ({
       "@type": "ListItem",
@@ -286,15 +296,51 @@ export function JsonLd() {
     })),
   };
 
-  // 6. ProfilePage Schema (Directly linking the WebPage to Person)
+  // 7. FAQPage Schema (Strengthens authoritative rich snippets & AI citations)
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+      {
+        "@type": "Question",
+        name: "Who is Prabhu P (0xdevprabhu)?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Prabhu P (@0xdevprabhu) is an Elite Full Stack Developer, Certified LAMP Stack Specialist, and Freelance Web Developer based in Sivakasi, Tamil Nadu, India, specializing in PHP, Laravel, MySQL, Next.js, React, and AI web applications.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "Is Prabhu P available for freelance web development in Sivakasi or remotely?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Yes. Prabhu P is available as a Freelance Web Developer in Sivakasi, Tamil Nadu and for remote clients worldwide — building custom business websites, e-commerce stores, B2B estimation portals, SaaS platforms, and AI chatbots.",
+        },
+      },
+      {
+        "@type": "Question",
+        name: "What notable web projects has Prabhu P built?",
+        acceptedAnswer: {
+          "@type": "Answer",
+          text: "Notable projects by Prabhu P include ZipZap Jobs Portal, ChessMate AI (powered by Stockfish AI & Next.js), Grocerzap, Sirenpyro, SmartMenu, Niranya Fashions, and enterprise portals.",
+        },
+      },
+    ],
+  };
+
+  // 8. ProfilePage Schema (Directly linking the WebPage to Person, Breadcrumbs & Primary Image)
   const profilePageSchema = {
     "@context": "https://schema.org",
     "@type": "ProfilePage",
     "@id": `${baseUrl}/#webpage`,
     url: baseUrl,
-    name: "Prabhu P (0xdevprabhu) - Developer Portfolio & Projects",
+    name: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
     description:
-      "Full Stack Developer & LAMP Stack Specialist portfolio of Prabhu P, Sivakasi. Showcase of enterprise web applications, AI tools, and technical skills.",
+      "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi featuring client web platforms, AI tools, and technical credentials.",
+    primaryImageOfPage: {
+      "@type": "ImageObject",
+      url: `${baseUrl}/icon-512x512.png`,
+    },
     isPartOf: {
       "@id": `${baseUrl}/#website`,
     },
@@ -325,6 +371,10 @@ export function JsonLd() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(siteNavigationSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify(professionalServiceSchema),
         }}
@@ -335,9 +385,12 @@ export function JsonLd() {
       />
       <script
         type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+      <script
+        type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(profilePageSchema) }}
       />
     </>
   );
 }
-

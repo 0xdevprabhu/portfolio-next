@@ -17,13 +17,12 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL("https://0xdevprabhu.vercel.app"),
   title: {
-    default:
-      "0xdevprabhu | Prabhu P - Full Stack Developer & Freelancer in Sivakasi | Noxlay Cyber Tech",
-    template: "%s | Prabhu P (@0xdevprabhu)",
+    default: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
+    template: "%s | Prabhu P",
   },
   description:
-    "Official portfolio of Prabhu P (@0xdevprabhu), Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech, and Freelance Web Developer in Sivakasi, Tamil Nadu. Available for freelance websites, e-commerce stores, Next.js, React, PHP, MySQL, and AI apps. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & more.",
-  applicationName: "0xdevprabhu Portfolio",
+    "Prabhu P - Elite Full Stack Developer & Freelance Web Developer in Sivakasi, Tamil Nadu (@0xdevprabhu). Building scalable SaaS systems, LAMP stack portals, Next.js, React, PHP, MySQL & AI apps (ZipZap Jobs Portal, ChessMate AI, Grocerzap).",
+  applicationName: "Prabhu P",
   authors: [
     { name: "Prabhu P", url: "https://0xdevprabhu.vercel.app" },
     { name: "0xdevprabhu", url: "https://github.com/0xdevprabhu" },
@@ -127,29 +126,31 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/assets/images/profile.jpg", sizes: "32x32", type: "image/jpeg" },
-      { url: "/assets/images/profile.jpg", sizes: "192x192", type: "image/jpeg" },
+      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
+      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
+      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
     ],
     apple: [
-      { url: "/assets/images/profile.jpg", sizes: "180x180", type: "image/jpeg" },
+      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
     ],
-    shortcut: "/assets/images/profile.jpg",
+    shortcut: "/favicon.ico",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
     type: "profile",
     locale: "en_US",
     url: "https://0xdevprabhu.vercel.app/",
-    siteName: "0xdevprabhu | Prabhu P Portfolio",
-    title: "0xdevprabhu | Prabhu P - Full Stack Developer & Freelancer in Sivakasi",
+    siteName: "Prabhu P",
+    title: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
     description:
-      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & hire for freelance or full-time projects.",
+      "Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & hire for Next.js, React, PHP & MySQL systems.",
     images: [
       {
         url: "/assets/images/profile.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Prabhu P (@0xdevprabhu) - Full Stack Developer & Freelancer in Sivakasi",
+        width: 1000,
+        height: 1000,
+        alt: "Prabhu P (@0xdevprabhu) - Elite Full Stack Developer",
       },
     ],
   },
@@ -157,9 +158,9 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@0xdevprabhu",
     creator: "@0xdevprabhu",
-    title: "Prabhu P (@0xdevprabhu) | Full Stack Developer & Freelancer in Sivakasi",
+    title: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
     description:
-      "Certified LAMP Stack Specialist, Full Stack Developer at Noxlay Cyber Tech & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI & hire.",
+      "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelancer in Sivakasi building scalable SaaS, Next.js & LAMP web apps.",
     images: ["/assets/images/profile.jpg"],
   },
   robots: {
