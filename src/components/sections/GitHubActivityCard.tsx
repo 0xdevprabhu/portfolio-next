@@ -153,7 +153,7 @@ export function GitHubActivityCard() {
         if (labels.length === 0 || colIndex - labels[labels.length - 1].colIndex >= 3) {
           labels.push({ label: MONTH_NAMES[monthIdx], colIndex });
         }
-        lastMonth = monthIdx;
+        lastMonth = monthIdx; 
       }
     });
 
