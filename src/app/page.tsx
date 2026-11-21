@@ -1,6 +1,8 @@
 "use client";
 
 import React, { useState } from "react";
+import Link from "next/link";
+import { engineeringInsightsData } from "@/data/insights";
 import { Navbar } from "@/components/layout/Navbar";
 import { BreadcrumbNav } from "@/components/ui/BreadcrumbNav";
 import { HeroSection } from "@/components/sections/HeroSection";
@@ -66,6 +68,33 @@ export default function Home() {
         <SkillsSection />
         <ExperienceSection onOpenCertificatePreview={handleOpenCertificate} />
         <ProjectsSection />
+
+        {/* Daily Updated Engineering Insight Strip for SEO & Internal Crawling */}
+        {engineeringInsightsData[0] && (
+          <section className="max-w-5xl mx-auto px-4 sm:px-6 my-8">
+            <div className="p-4 sm:p-5 rounded-2xl bg-white/80 dark:bg-slate-900/80 border border-slate-200/90 dark:border-slate-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 text-[11px] font-mono uppercase tracking-wider text-primary font-semibold">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                  <span>Latest Dev Insight &bull; {engineeringInsightsData[0].publishedAt}</span>
+                </div>
+                <Link
+                  href={`/insights/${engineeringInsightsData[0].slug}`}
+                  className="block text-sm sm:text-base font-bold text-slate-900 dark:text-white hover:text-primary transition-colors"
+                >
+                  {engineeringInsightsData[0].title}
+                </Link>
+              </div>
+              <Link
+                href="/insights"
+                className="text-xs font-mono font-semibold text-primary hover:underline shrink-0"
+              >
+                All Notes ({engineeringInsightsData.length}) &rarr;
+              </Link>
+            </div>
+          </section>
+        )}
+
         <CertificatesSection onOpenCertificatePreview={handleOpenCertificate} />
         <ContactSection />
       </main>

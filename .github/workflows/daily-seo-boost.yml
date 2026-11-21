@@ -1,0 +1,35 @@
+name: Daily Gemini SEO Boost
+
+on:
+  schedule:
+    # Runs every day at 02:30 UTC (08:00 AM IST)
+    - cron: "30 2 * * *"
+  workflow_dispatch: # Manual-aa GitHub Actions tab-la run panni test pannalam
+
+permissions:
+  contents: write
+
+jobs:
+  generate-seo-insight:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Generate Daily SEO Insight with Gemini
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: node scripts/generate-daily-seo.mjs
+
+      - name: Commit and push updated insights
+        run: |
+          git config user.name "0xdevprabhu-bot"
+          git config user.email "0xdevprabhu@gmail.com"
+          git add src/data/insights.ts
+          git diff --staged --quiet || git commit -m "chore(seo): publish daily engineering insight"
+          git push

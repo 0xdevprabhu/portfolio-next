@@ -1,52 +1,34 @@
-import { MetadataRoute } from "next";
+import type { MetadataRoute } from "next";
+import { engineeringInsightsData } from "@/data/insights";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = "https://0xdevprabhu.vercel.app";
-  const currentDate = new Date();
+  const latestDate = engineeringInsightsData[0]?.publishedAt
+    ? new Date(engineeringInsightsData[0].publishedAt)
+    : new Date();
+
+  const insightRoutes: MetadataRoute.Sitemap = engineeringInsightsData.map(
+    (item) => ({
+      url: `${baseUrl}/insights/${item.slug}`,
+      lastModified: new Date(item.publishedAt),
+      changeFrequency: "weekly",
+      priority: 0.85,
+    })
+  );
 
   return [
     {
       url: baseUrl,
-      lastModified: currentDate,
+      lastModified: latestDate,
       changeFrequency: "daily",
       priority: 1.0,
     },
     {
-      url: `${baseUrl}/#about`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
+      url: `${baseUrl}/insights`,
+      lastModified: latestDate,
+      changeFrequency: "daily",
       priority: 0.9,
     },
-    {
-      url: `${baseUrl}/#projects`,
-      lastModified: currentDate,
-      changeFrequency: "weekly",
-      priority: 0.95,
-    },
-    {
-      url: `${baseUrl}/#skills`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/#experience`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.85,
-    },
-    {
-      url: `${baseUrl}/#certifications`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.8,
-    },
-    {
-      url: `${baseUrl}/#contact`,
-      lastModified: currentDate,
-      changeFrequency: "monthly",
-      priority: 0.9,
-    },
+    ...insightRoutes,
   ];
 }
-

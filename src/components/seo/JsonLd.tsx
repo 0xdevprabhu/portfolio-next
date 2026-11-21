@@ -1,8 +1,11 @@
 import React from "react";
 import { profileData } from "@/data/profile";
 import { projectsData } from "@/data/projects";
+import { engineeringInsightsData } from "@/data/insights";
 
 export function JsonLd() {
+  const latestModified =
+    engineeringInsightsData[0]?.publishedAt || new Date().toISOString().split("T")[0];
   const baseUrl = "https://0xdevprabhu.vercel.app";
 
   // 1. Person Schema (Primary Authoritative Entity for Prabhu P / @0xdevprabhu)
@@ -74,7 +77,7 @@ export function JsonLd() {
     sameAs: [
       "https://github.com/0xdevprabhu",
       "https://www.linkedin.com/in/0xdevprabhu",
-      "https://www.instagram.com/in__prabhu/?hl=en",
+      "https://www.instagram.com/in__prabhu/",
       "https://www.youtube.com/@PrabhuP-s9l",
       "https://wa.me/919344095995",
     ],
@@ -334,6 +337,7 @@ export function JsonLd() {
     "@type": "ProfilePage",
     "@id": `${baseUrl}/#webpage`,
     url: baseUrl,
+    dateModified: latestModified,
     name: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
     description:
       "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi featuring client web platforms, AI tools, and technical credentials.",

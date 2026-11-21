@@ -13,10 +13,7 @@ import {
   Briefcase,
   GraduationCap,
   Mail,
-  FileDown,
   Palette,
-  Menu,
-  X,
   Send,
 } from "lucide-react";
 
@@ -35,7 +32,6 @@ export function Navbar() {
 
   const [activeSection, setActiveSection] = useState("home");
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const scrollLockRef = useRef<{
     target: string;
@@ -49,7 +45,6 @@ export function Navbar() {
       e.preventDefault();
 
       const sectionId = href.substring(1);
-      setIsMobileMenuOpen(false);
       setActiveSection(sectionId);
 
       const el = document.getElementById(sectionId);
@@ -263,69 +258,8 @@ export function Navbar() {
               <span>Let&apos;s Talk</span>
               <Send className="h-3.5 w-3.5 shrink-0" />
             </a>
-
-            {/* Mobile Burger Toggle Only */}
-            <button
-              type="button"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              aria-label="Toggle mobile menu"
-              className="p-2 lg:hidden rounded-xl bg-slate-100/90 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700"
-            >
-              {isMobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-            </button>
           </div>
         </div>
-
-        {/* Mobile Dropdown Menu */}
-        {isMobileMenuOpen && (
-          <div className="lg:hidden border-b border-slate-200 dark:border-slate-800 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl px-4 py-4 space-y-2 max-h-[calc(100vh-4.5rem)] overflow-y-auto">
-            {navLinks.map((link) => {
-              const Icon = link.icon;
-              const isActive = activeSection === link.href.substring(1);
-              return (
-                <a
-                  key={link.href}
-                  href={link.href}
-                  onClick={(e) => handleSectionNavigate(e, link.href)}
-                  className={`flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-medium transition-all ${
-                    isActive
-                      ? "text-white font-semibold shadow-xs"
-                      : "text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800"
-                  }`}
-                  style={isActive ? { backgroundColor: currentColorTheme.primary } : {}}
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{link.label}</span>
-                </a>
-              );
-            })}
-
-            <div className="pt-2 grid grid-cols-2 gap-2">
-              <button
-                type="button"
-                onClick={() => {
-                  setIsMobileMenuOpen(false);
-                  setIsThemeCustomizerOpen(true);
-                }}
-                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold border border-slate-200 dark:border-slate-700"
-              >
-                <Palette className="h-4 w-4" style={{ color: currentColorTheme.primary }} />
-                <span>Theme &amp; Mode</span>
-              </button>
-
-              <a
-                href="/assets/documents/Prabhu's_Resume.pdf"
-                download
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="flex items-center justify-center gap-2 py-2.5 px-3 rounded-xl text-xs font-semibold text-white shadow-sm"
-                style={{ backgroundColor: currentColorTheme.primary }}
-              >
-                <FileDown className="h-4 w-4" />
-                <span>Download CV</span>
-              </a>
-            </div>
-          </div>
-        )}
       </header>
 
       {/* Floating Bottom Navigation Bar for Mobile Phones — Centered & Contained */}

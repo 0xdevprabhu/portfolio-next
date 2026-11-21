@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { ThemeProvider } from "@/components/theme/ThemeProvider";
 import { LoadingScreen } from "@/components/ui/LoadingScreen";
+import { ScrollProgress } from "@/components/ui/ScrollProgress";
 import { JsonLd } from "@/components/seo/JsonLd";
 
 export const viewport: Viewport = {
@@ -226,6 +227,7 @@ export default function RootLayout({
       <body className="antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary overflow-x-hidden w-full max-w-full">
         <ThemeProvider>
           <LoadingScreen minDuration={1000} />
+          <ScrollProgress />
           {children}
         </ThemeProvider>
       </body>
