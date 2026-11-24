@@ -31,7 +31,7 @@ export function JsonLd() {
     description:
       "Prabhu P (@0xdevprabhu) is an Elite Full Stack Developer, Certified LAMP Stack Specialist & Freelance Web Developer in Sivakasi, Tamil Nadu, building scalable SaaS systems, Next.js interfaces, PHP/MySQL platforms, and AI applications.",
     url: baseUrl,
-    image: `${baseUrl}/assets/images/profile.jpg`,
+    image: `${baseUrl}/profile.webp`,
     email: `mailto:${profileData.email}`,
     telephone: profileData.phone,
     gender: "Male",
@@ -188,7 +188,7 @@ export function JsonLd() {
     "@type": "ProfessionalService",
     "@id": `${baseUrl}/#service`,
     name: "Prabhu P (@0xdevprabhu) - Elite Full Stack & Freelance Web Developer",
-    image: `${baseUrl}/icon-512x512.png`,
+    image: `${baseUrl}/profile.webp`,
     description:
       "Freelance web development, custom business websites, LAMP stack engineering, e-commerce solutions, Next.js apps, and AI web portals by Prabhu P in Sivakasi, Tamil Nadu, India.",
     url: baseUrl,
@@ -343,7 +343,7 @@ export function JsonLd() {
       "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi featuring client web platforms, AI tools, and technical credentials.",
     primaryImageOfPage: {
       "@type": "ImageObject",
-      url: `${baseUrl}/icon-512x512.png`,
+      url: `${baseUrl}/profile.webp`,
     },
     isPartOf: {
       "@id": `${baseUrl}/#website`,

@@ -147,25 +147,17 @@ export function Navbar() {
             onClick={(e) => handleSectionNavigate(e, "#home")}
             className="flex items-center gap-2.5 sm:gap-3 group focus:outline-none shrink-0"
           >
-            {/* Micro Squircle Photo Badge + Live Online Pulsing Dot */}
+            {/* Clean Profile Photo Badge + Live Online Pulsing Dot */}
             <div className="relative shrink-0">
-              <div
-                className="w-9 h-9 sm:w-11 sm:h-11 rounded-2xl p-[1.5px] shadow-md transition-all duration-300 group-hover:scale-105 group-hover:shadow-lg overflow-hidden"
-                style={{
-                  background: `linear-gradient(135deg, ${currentColorTheme.accent}, ${currentColorTheme.primary})`,
-                  boxShadow: `0 4px 14px -2px ${currentColorTheme.glow}`,
-                }}
-              >
-                <div className="relative w-full h-full rounded-[14px] overflow-hidden bg-slate-100 dark:bg-slate-800">
-                  <Image
-                    src={profileData.avatar}
-                    alt={profileData.name}
-                    width={44}
-                    height={44}
-                    priority
-                    className="w-full h-full object-cover object-top scale-110 group-hover:scale-115 transition-transform duration-300"
-                  />
-                </div>
+              <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-full border border-slate-200/90 dark:border-slate-700/80 bg-white dark:bg-slate-900 shadow-xs transition-transform duration-300 group-hover:scale-105 overflow-hidden">
+                <Image
+                  src={profileData.avatar}
+                  alt={profileData.name}
+                  width={44}
+                  height={44}
+                  priority
+                  className="w-full h-full object-cover object-top"
+                />
               </div>
 
               {/* Pulsing Emerald Online Indicator */}

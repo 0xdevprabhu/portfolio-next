@@ -17,7 +17,7 @@ export async function generateMetadata({
   if (!article) return {};
 
   const url = `https://0xdevprabhu.vercel.app/insights/${article.slug}`;
-  const ogImage = "https://0xdevprabhu.vercel.app/assets/images/profile.jpg";
+  const ogImage = "https://0xdevprabhu.vercel.app/profile.webp";
 
   return {
     title: article.title,

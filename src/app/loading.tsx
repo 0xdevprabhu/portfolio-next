@@ -14,7 +14,7 @@ export default function Loading() {
           {/* Portrait Frame */}
           <div className="relative w-24 h-24 shrink-0 rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
             <Image
-              src="/assets/images/profile.jpg"
+              src="/profile.webp"
               alt="Prabhu P"
               fill
               sizes="96px"

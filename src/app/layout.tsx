@@ -127,15 +127,12 @@ export const metadata: Metadata = {
   },
   icons: {
     icon: [
-      { url: "/favicon.ico", sizes: "48x48", type: "image/x-icon" },
-      { url: "/icon-48x48.png", sizes: "48x48", type: "image/png" },
-      { url: "/icon-96x96.png", sizes: "96x96", type: "image/png" },
-      { url: "/icon-192x192.png", sizes: "192x192", type: "image/png" },
+      { url: "/profile.webp", type: "image/webp" },
     ],
     apple: [
-      { url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" },
+      { url: "/profile.webp", type: "image/webp" },
     ],
-    shortcut: "/favicon.ico",
+    shortcut: "/profile.webp",
   },
   manifest: "/manifest.webmanifest",
   openGraph: {
@@ -148,7 +145,7 @@ export const metadata: Metadata = {
       "Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelance Web Developer in Sivakasi. Explore ZipZap Jobs Portal, ChessMate AI, Grocerzap & hire for Next.js, React, PHP & MySQL systems.",
     images: [
       {
-        url: "/assets/images/profile.jpg",
+        url: "/profile.webp",
         width: 1000,
         height: 1000,
         alt: "Prabhu P (@0xdevprabhu) - Elite Full Stack Developer",
@@ -162,7 +159,7 @@ export const metadata: Metadata = {
     title: "Prabhu P - Elite Full Stack Developer | 0xdevprabhu",
     description:
       "Official portfolio of Prabhu P (@0xdevprabhu) - Elite Full Stack Developer & Freelancer in Sivakasi building scalable SaaS, Next.js & LAMP web apps.",
-    images: ["/assets/images/profile.jpg"],
+    images: ["/profile.webp"],
   },
   robots: {
     index: true,
@@ -226,7 +223,7 @@ export default function RootLayout({
       </head>
       <body className="antialiased min-h-screen flex flex-col selection:bg-primary/20 selection:text-primary overflow-x-hidden w-full max-w-full">
         <ThemeProvider>
-          <LoadingScreen minDuration={1000} />
+          <LoadingScreen minDuration={2200} />
           <ScrollProgress />
           {children}
         </ThemeProvider>

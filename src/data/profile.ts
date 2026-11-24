@@ -9,7 +9,7 @@ export const profileData = {
   email: "0xdevprabhu@gmail.com",
   phone: "+91 93440 95995",
   whatsapp: "https://wa.me/919344095995",
-  avatar: "/assets/images/profile.jpg",
+  avatar: "/profile.webp",
   resumePath: "/assets/documents/Prabhu's_Resume.pdf",
   rolesToType: [
     "Full Stack Developer",
