@@ -58,14 +58,16 @@ Return ONLY valid JSON matching this exact schema (no markdown fences):
   "title": "Compelling Specific Title (55-70 chars)",
   "summary": "Clear 1-2 sentence meta description summary (130-160 chars)",
   "content": [
-    "Paragraph 1: Practical engineering or local business problem statement.",
-    "Paragraph 2: Technical architecture solution using Next.js, PHP/MySQL, REST APIs, or AI.",
-    "Paragraph 3: Real-world impact and how businesses or founders can collaborate with Prabhu P (@0xdevprabhu)."
+    "Paragraph 1: Practical engineering or local business problem statement with concrete context (80-120 words).",
+    "Paragraph 2: Technical architecture solution using Next.js, PHP/MySQL, REST APIs, or AI with specific patterns (80-120 words).",
+    "Paragraph 3: Security, performance optimization, or SEO implementation detail / practical takeaway (80-120 words).",
+    "Paragraph 4: Real-world impact, metrics, or deployment best practices for Tamil Nadu businesses (80-120 words).",
+    "Paragraph 5: Conclusion and how businesses or founders can collaborate with Prabhu P (@0xdevprabhu) (60-90 words)."
   ],
   "category": "Short Category Name",
   "keywords": ["keyword 1", "keyword 2", "keyword 3"],
   "publishedAt": "${todayISO}",
-  "readTime": "3 min read"
+  "readTime": "4 min read"
 }
 `;
 
@@ -240,3 +242,4 @@ run()
     console.error("Failed:", err.message);
     process.exit(1);
   });
+
