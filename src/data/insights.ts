@@ -11,6 +11,26 @@ export interface EngineeringInsight {
 
 export const engineeringInsightsData: EngineeringInsight[] = [
   {
+    "slug": "modernizing-legacy-php-apps-nextjs-tamil-nadu-smes-2026-11-24",
+    "title": "Modernizing Legacy PHP Apps with Next.js for Tamil Nadu SMEs",
+    "summary": "Learn how Sivakasi & Madurai businesses can upgrade legacy PHP systems into high-speed Next.js frontend applications without rewriting existing MySQL databases.",
+    "content": [
+      "Many manufacturing and printing businesses across Sivakasi, Virudhunagar, and Madurai rely heavily on aging legacy PHP/MySQL ERPs and web portals. While these systems contain years of core operational data, their sluggish desktop interfaces, lack of mobile responsiveness, and outdated codebases hold companies back from competing in modern digital markets.",
+      "As a dedicated LAMP stack specialist and Next.js developer in Tamil Nadu, I bridge this gap by architecting headless web applications. By wrapping legacy PHP business logic and MySQL tables in secure RESTful API endpoints, we attach a blazingly fast Next.js React frontend. This yields instant page loads, robust SEO, and responsive mobile UX while preserving existing database logic.",
+      "Modernizing your digital infrastructure doesn't mean starting from scratch or risking business disruption. If you are looking for a freelance web developer in Sivakasi to upgrade your web portals, SaaS platforms, or custom APIs, connect with Prabhu P (@0xdevprabhu) at Noxlay Cyber Tech today."
+    ],
+    "category": "Web Architecture",
+    "keywords": [
+      "Sivakasi developer",
+      "freelance web developer in Sivakasi",
+      "developer prabhu",
+      "LAMP stack specialist",
+      "Next.js developer Tamil Nadu"
+    ],
+    "publishedAt": "2026-11-24",
+    "readTime": "3 min read"
+  },
+  {
     "slug": "modernizing-legacy-lamp-stack-erps-nextjs-sivakasi-2026-11-24",
     "title": "Modernizing Legacy LAMP Stack ERPs with Next.js in Sivakasi",
     "summary": "Learn how Sivakasi enterprise apps built on legacy PHP/MySQL can seamlessly upgrade UI performance with Next.js REST APIs without rewriting core database logic.",
