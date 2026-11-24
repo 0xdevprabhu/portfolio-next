@@ -11,6 +11,26 @@ export interface EngineeringInsight {
 
 export const engineeringInsightsData: EngineeringInsight[] = [
   {
+    "slug": "modernizing-legacy-lamp-stack-erps-nextjs-sivakasi-2026-11-24",
+    "title": "Modernizing Legacy LAMP Stack ERPs with Next.js in Sivakasi",
+    "summary": "Learn how Sivakasi enterprise apps built on legacy PHP/MySQL can seamlessly upgrade UI performance with Next.js REST APIs without rewriting core database logic.",
+    "content": [
+      "Many manufacturing and printing firms across Sivakasi, Virudhunagar, and Madurai rely heavily on mission-critical LAMP stack ERP systems built years ago. While the backend business logic and MySQL databases remain robust, outdated legacy frontends often lead to slow page loads, poor mobile responsiveness, and reduced operational throughput.",
+      "To bridge this gap without risking a costly complete overhaul, I architect hybrid solutions using Next.js on the frontend paired with lightweight RESTful PHP APIs. By leveraging Next.js Server Components, incremental static regeneration (ISR), and secure MySQL querying patterns, we deliver modern, lightning-fast dashboard interfaces while retaining proven backend infrastructure.",
+      "Whether you need to scale an internal manufacturing portal or refactor custom software for mobile devices, working with a dedicated full stack developer ensures high productivity and security. Connect with Prabhu P (@0xdevprabhu) at Noxlay Cyber Tech to modernize your legacy tech stack seamlessly."
+    ],
+    "category": "Full Stack Architecture",
+    "keywords": [
+      "Sivakasi developer",
+      "freelance web developer in Sivakasi",
+      "developer prabhu",
+      "LAMP stack specialist",
+      "Next.js developer Tamil Nadu"
+    ],
+    "publishedAt": "2026-11-24",
+    "readTime": "3 min read"
+  },
+  {
     slug: "custom-ecommerce-and-b2b-portals-for-sivakasi-businesses",
     title: "Building High-Speed Custom E-Commerce & B2B Portals for Sivakasi Industries",
     summary:

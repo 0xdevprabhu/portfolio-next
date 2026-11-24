@@ -221,15 +221,12 @@ async function run() {
     "\n  "
   )},\n`;
 
-  const marker =
-    "export const engineeringInsightsData: EngineeringInsight[] = [\n";
-  if (!existingFileContent.includes(marker)) {
+  const markerRegex = /export const engineeringInsightsData: EngineeringInsight\[\] = \[\r?\n/;
+  const match = existingFileContent.match(markerRegex); if (!match) {
     throw new Error("Could not find array marker in src/data/insights.ts");
   }
 
-  const updatedContent = existingFileContent.replace(
-    marker,
-    `${marker}${formattedEntry}`
+  const updatedContent = existingFileContent.replace(markerRegex, `${match[0]}${formattedEntry}`
   );
 
   fs.writeFileSync(INSIGHTS_FILE, updatedContent, "utf8");
